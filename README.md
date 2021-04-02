@@ -1,4 +1,4 @@
-# Memetherium Exchange (DAPP) 
+# Memethereum Exchange (DAPP) 
 Team members: Xinyi Wang, Jake Barth, Andy Wilson, Daiana Bilbao
 
 ## Summary:
