@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import TopBar from "./components/TopBar";
 
 import Greeting from "./pages/Greeting";
+import CreateMeme from "./pages/CreateMeme";
 import MyZombieInventory from "./pages/MyZombieInventory";
 import ZombieInventory from "./pages/ZombieInventory";
 import AttackZombie from "./pages/AttackZombie";
@@ -62,7 +63,7 @@ class App extends Component {
           <Container>
             <TopBar state={this.state} />
             <div>
-              <Route exact path="/" component={Greeting} />
+              <Route exact path="/" component={CreateMeme} />
               <Route
                 exact
                 path="/myZombieInventory"
