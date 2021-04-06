@@ -8,8 +8,7 @@ function AddCaption({ currentImage, topText, bottomText, handleTextChange, submi
             {(src) ?
                 <div>
                     <h2>Chosen Meme: <em>{alt}</em></h2>
-                    <img src={src} />
-                </div>: ""}
+                </div> : ""}
             <Form onSubmit={submitText}>
                 <Form.Field>
                     <label>Top Text</label>
