@@ -10,7 +10,7 @@
 // Types are listened for within the reducer switch whenever an action is fired off.
 // The action is sent to the reducer with a type, and when that type matches the type within the a case of the switch,
 // some sort of data manipulation is fired off.
-//
+
 // They are defined as all upper-case constants and may be exported if needed elsewhere.
 
 const BLOCKCHAIN_INITIALIZED = "BLOCKCHAIN_INITIALIZED";
