@@ -57,7 +57,7 @@ class TransferZombie extends Component {
   render() {
     return (
       <div>
-        *<Header icon="browser" content="Please find me a new master!!" />
+        <Header icon="browser" content="Please find me a new master!!" />
         <table>
           <tr>
             <th>

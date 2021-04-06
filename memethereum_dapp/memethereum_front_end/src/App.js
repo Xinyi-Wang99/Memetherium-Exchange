@@ -10,6 +10,7 @@ import TopBar from "./components/TopBar";
 
 import Greeting from "./pages/Greeting";
 import CreateMeme from "./pages/CreateMeme";
+// import AddCaption from "./pages/AddCaption";
 import MyZombieInventory from "./pages/MyZombieInventory";
 import ZombieInventory from "./pages/ZombieInventory";
 import AttackZombie from "./pages/AttackZombie";
@@ -63,17 +64,12 @@ class App extends Component {
           <Container>
             <TopBar state={this.state} />
             <div>
-              <Route exact path="/" component={CreateMeme} />
-              <Route
-                exact
-                path="/myZombieInventory"
-                component={MyZombieInventory}
-              />
-              <Route
-                exact
-                path="/ZombieInventory"
-                component={ZombieInventory}
-              />
+              {/* Create Meme & Add Caption Pages*/}
+              <Route exact path="/" component={CreateMeme}/>
+              {/*<Route exact path="/Add-Caption" component={AddCaption}/>*/}
+              <Route exact path="/myZombieInventory" component={MyZombieInventory}/>
+              <Route exact path="/ZombieInventory" component={ZombieInventory}/>
+
               {/* routes used in zombie action modal */}
               <Route exact path="/AttackZombie" component={AttackZombie} />
               <Route exact path="/FeedOnKitty" component={FeedOnKitty} />
