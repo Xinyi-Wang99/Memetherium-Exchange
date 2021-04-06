@@ -1,15 +1,15 @@
 import { Button, Icon, Form } from "semantic-ui-react";
 import React from "react";
 
-function AddCaption({ currentImage, topText, bottomText, handleTextChange, submitText, loading }) {
+function AddCaption({ currentImage, topText, bottomText, handleTextChange, convert, loading }) {
     const { src, alt } = currentImage;
     return (
         <div>
             {(src) ?
                 <div>
-                    <h2>Chosen Meme: <em>{alt}</em></h2>
+                    <h2>Selected Meme: <em>{alt}</em></h2>
                 </div> : ""}
-            <Form onSubmit={submitText}>
+            <Form onSubmit={convert}>
                 <Form.Field>
                     <label>Top Text</label>
                     <input
@@ -29,7 +29,7 @@ function AddCaption({ currentImage, topText, bottomText, handleTextChange, submi
                     />
                 </Form.Field>
                 <Button primary type="submit" loading={loading}>
-                    <Icon name="check" /> Add Caption
+                    <Icon name="check" /> Download Meme
                 </Button>
             </Form>
         </div>

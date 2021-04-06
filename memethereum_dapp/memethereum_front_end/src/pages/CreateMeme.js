@@ -6,9 +6,11 @@ export default class CreateMeme extends Component {
     constructor(props) {
         super(props);
         this.openImage = this.openImage.bind(this);
+        this.getBase64Image = this.getBase64Image.bind(this);
         this.state = {
             currentImage: "",
-            currentImageBase64: null,
+            currImage: "",
+            isLoaded: false,
             index: -1,
             memeImages: [],
             topText: "",
@@ -35,22 +37,20 @@ export default class CreateMeme extends Component {
             .catch(err => console.log("Error: " + err));
     }
 
-    handleClose = () => this.setState({ modalOpen: false });
+    handleClose = () => this.setState({ modalOpen: false, bottomText: "", topText: "", loading: true});
 
     handleTextChange = e => {
         const { name, value } = e.target;
         this.setState({ [name]: value, loading: false });
     };
 
-    submitText = e => {
-        console.log("HERE " + this.state.topText + " " + this.state.bottomText)
-    };
-
     openImage = (e, i) =>{
         this.setState({
             currentImage: e.target,
             modalOpen: true,
-            index: i
+            index: i,
+            currImage: this.state.memeImages[i],
+            isLoaded: true
         });
     };
 
@@ -75,7 +75,18 @@ export default class CreateMeme extends Component {
         };
     }
 
-
+    getBase64Image(url) {
+            var img = new Image();
+            img.src = url;
+            img.crossOrigin = "Anonymous"
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            var dataURL = canvas.toDataURL("image/png");
+            return dataURL;
+    }
 
     render() {
         var newWidth = 600;
@@ -95,19 +106,18 @@ export default class CreateMeme extends Component {
                         content="Add a Caption!"
                     />
                     <Modal.Content>
-                        {(this.state.memeImages[this.state.index] && this.state.currentImage) ?
+                        {(this.getBase64Image(this.state.currImage.url) && this.state.topText && this.state.bottomText) ?
                             <svg
                                 width={newWidth}
                                 id="svg_ref"
-                                height={newWidth / (this.state.memeImages[this.state.index].width/this.state.memeImages[this.state.index].height)}
+                                height={newWidth/(this.state.currImage.width/this.state.currImage.height)}
                                 ref={el => { this.svgRef = el }}
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlnsXlink="http://www.w3.org/1999/xlink">
                                 <image
                                     ref={el => { this.imageRef = el }}
-                                    // xlinkHref= {this.getBase64Image(this.state.memeImages[this.state.index].url)}
-                                    xlinkHref={this.state.memeImages[this.state.index].url}
-                                    height={newWidth / (this.state.memeImages[this.state.index].width/this.state.memeImages[this.state.index].height)}
+                                    xlinkHref={this.getBase64Image(this.state.currImage.url)}
+                                    height={newWidth/(this.state.currImage.width/this.state.currImage.height)}
                                     width={newWidth}
                                 />
                                 <text
@@ -127,21 +137,17 @@ export default class CreateMeme extends Component {
                                     {this.state.bottomText}
                                 </text>
                             </svg> : ""}
-
                         <AddCaption
                             currentImage = {this.state.currentImage}
                             topText = {this.state.topText}
                             bottomText = {this.state.bottomText}
                             handleTextChange = {this.handleTextChange}
-                            submitText = {this.submitText}
+                            convert = {this.convertSvgToImage}
                             loading = {this.state.loading}/>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button color="red" onClick={this.handleClose} inverted>
                             <Icon name="cancel" /> Close
-                        </Button>
-                        <Button color="green" onClick={this.convertSvgToImage} inverted>
-                            Download Meme
                         </Button>
                     </Modal.Actions>
                 </Modal>
