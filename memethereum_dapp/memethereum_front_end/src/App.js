@@ -11,6 +11,10 @@ import TopBar from "./components/TopBar";
 import Greeting from "./pages/Greeting";
 import CreateMeme from "./pages/CreateMeme";
 // import AddCaption from "./pages/AddCaption";
+
+import Ipfs, {ipfs } from './pages/Ipfs';
+// import IPFS.js from "./pages/Ipfs"
+
 import MyZombieInventory from "./pages/MyZombieInventory";
 import ZombieInventory from "./pages/ZombieInventory";
 import AttackZombie from "./pages/AttackZombie";
@@ -67,7 +71,8 @@ class App extends Component {
               {/* Create Meme & Add Caption Pages*/}
               <Route exact path="/" component={CreateMeme}/>
               {/*<Route exact path="/Add-Caption" component={AddCaption}/>*/}
-              <Route exact path="/myZombieInventory" component={MyZombieInventory}/>
+              <Route exact path="/uploadMeme" component={Ipfs}/>
+                <Route exact path="/myZombieInventory" component={MyZombieInventory}/>
               <Route exact path="/ZombieInventory" component={ZombieInventory}/>
 
               {/* routes used in zombie action modal */}
