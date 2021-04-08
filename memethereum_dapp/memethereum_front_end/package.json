@@ -8,6 +8,8 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "dotenv": "^8.2.0",
+    "hardhat": "^2.1.2",
+    "ipfs-api": "^26.1.2",
     "next": "^9.5.5",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
