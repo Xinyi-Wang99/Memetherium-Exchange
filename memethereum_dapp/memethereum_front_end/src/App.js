@@ -12,7 +12,7 @@ import Greeting from "./pages/Greeting";
 import CreateMeme from "./pages/CreateMeme";
 // import AddCaption from "./pages/AddCaption";
 
-import Ipfs, {ipfs } from './pages/Ipfs';
+import Ipfs from './pages/Ipfs';
 // import IPFS.js from "./pages/Ipfs"
 
 import MyZombieInventory from "./pages/MyZombieInventory";
@@ -38,11 +38,20 @@ class App extends Component {
   //
   // **************************************************************************
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            userAddress: null
+        }
+    }
+
 
     componentDidMount = async () => {
       try {
           const CZInfo = await initBlockchain(); // from utils directory;  connect to provider and to metamask or other signer
           await getZombieCount(CZInfo.CZ, CZInfo.userAddress); // get user count and total count of zombies
+          this.setState({userAddress: CZInfo.userAddress});
+          console.log(CZInfo);
       } catch (error) {
           // Catch any errors for any of the above operations.
           alert(`Failed to load provider, signer, or contract. Check console for details.`);
@@ -71,7 +80,9 @@ class App extends Component {
               {/* Create Meme & Add Caption Pages*/}
               <Route exact path="/" component={CreateMeme}/>
               {/*<Route exact path="/Add-Caption" component={AddCaption}/>*/}
-              <Route exact path="/uploadMeme" component={Ipfs}/>
+              <Route exact path="/uploadMeme">
+                  <Ipfs userAddress ={this.state.userAddress}/>
+              </Route>
                 <Route exact path="/myZombieInventory" component={MyZombieInventory}/>
               <Route exact path="/ZombieInventory" component={ZombieInventory}/>
 

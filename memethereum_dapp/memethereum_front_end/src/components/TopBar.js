@@ -6,6 +6,7 @@ import { Button } from "semantic-ui-react";
 
 import CreateZombie from "./CreateZombie";
 
+
 import { Menu, Header } from "semantic-ui-react";
 
 function mapStateToProps(state) {
@@ -24,7 +25,9 @@ class TopBar extends Component {
       <div>
         <Menu style={{ marginTop: "10px", backgroundColor: "Salmon" }}>
           <Menu.Item>
-            <CreateZombie />
+              <Link to={{ pathname: "/uploadMeme" }}>
+                  <Button primary>Upload Memes</Button>
+              </Link>
           </Menu.Item>
 
           <Menu.Item>
