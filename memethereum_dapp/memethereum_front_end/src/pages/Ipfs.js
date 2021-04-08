@@ -3,6 +3,8 @@ import React, {Component} from "react";
 const IPFS = require('ipfs-api')
 const ipfs = new IPFS({host: 'ipfs.infura.io', port:5001, protocol:'https'})
 
+
+
 export default class Ipfs extends Component{
 
     constructor(props) {
@@ -35,15 +37,16 @@ export default class Ipfs extends Component{
             }
             this.setState({ipfsHash : result[0].hash})
         })
+        console.log('this is from IPFS', this.props.userAddress)
+
     }
 
 
     render() {
         return(
             <div>
-                <a href="#">Meme Upload</a>
                 <main className="container">
-                    <h1>Your Meme</h1>
+                    <h2>Your Meme</h2>
                     <p> This image is stored on IPFS & The Ethereum Blockchain!</p>
                     <img src ={`https://ipfs.io/ipfs/${this.state.ipfsHash}`} alt =""/>
                     <h2>Upload Meme</h2>

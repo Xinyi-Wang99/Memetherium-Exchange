@@ -488,7 +488,7 @@ const initBlockchain = async () => {
         "  ]");
 
    // CZ = new ethers.Contract('0xf01b5d859b2a73DBE407f4553b06ffF50F19b7e4', abi, signer);
-    CZ = new ethers.Contract('0xB11f26ad0bb7f4705F9eB116c224FFc323798695', abi, signer);
+    CZ = new ethers.Contract('0x34dC208f7aEFB4E04E77EE9651B25F8bF207C40d', abi, signer);
     // put state data into the REDUX store for easy access from other pages and components
 
     let data = { provider, signer, CZ, userAddress };
