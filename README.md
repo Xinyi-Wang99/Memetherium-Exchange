@@ -26,7 +26,7 @@ Make functioning UI
 
 ## An expected schedule for accomplishing intermediate and final goals:
 ### Week 1: 
- We plan on having the design of our DApp finalized.
+We plan on having the design of our DApp finalized.
 By the end of the first week, we will need to have a design sketch of the UI + all functionalities.
 ### Week 2: 
 #### Uploading images
@@ -60,7 +60,7 @@ By the end of the first week, we will need to have a design sketch of the UI + a
 #### Create and design the UI
 #### Set up the tabs
 ### Daiana Bilbao:
-#### Obtaining existing images using https://imgflip.com/api where we can get an array of popular memes from the internet. 
-#### Displaying images returned by the API on our DAPP. 
-
+#### Obtaining existing images using https://imgflip.com/api and creating a meme gallery
+#### Creating Meme Functionality + Adding Captions to Memes. (Creating new SVG Image)
+#### Downloading SVG as a PNG image
 
