@@ -25,6 +25,12 @@ class TopBar extends Component {
       <div>
         <Menu style={{ marginTop: "10px", backgroundColor: "Salmon" }}>
           <Menu.Item>
+              <Link to={{ pathname: "/" }}>
+                  <Button primary>Create Meme</Button>
+              </Link>
+          </Menu.Item>
+          
+          <Menu.Item>
               <Link to={{ pathname: "/uploadMeme" }}>
                   <Button primary>Upload Memes</Button>
               </Link>
