@@ -30,18 +30,6 @@ class TopBar extends Component {
               </Link>
           </Menu.Item>
 
-          <Menu.Item>
-            <Link to={{ pathname: "/myZombieInventory" }}>
-              <Button primary>Show My Zombies</Button>
-            </Link>
-          </Menu.Item>
-
-          <Menu.Item>
-            <Link to={{ pathname: "/ZombieInventory" }}>
-              <Button primary>Show All Zombies</Button>
-            </Link>
-          </Menu.Item>
-
           <Menu.Item position="right">
             <Link to={{ pathname: "/" }}>
               <Header size="large">CryptoZombies at CSU!!! </Header>
