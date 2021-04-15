@@ -43,7 +43,9 @@ const initBlockchain = async () => {
 
     let CZ = null;
     console.log("READ ABI");
-    //const abi = JSON.parse(CryptoZombiesContract.abi);
+    console.log(CryptoZombiesContract);
+    // const abi = JSON.parse(CryptoZombiesContract.abi);
+    // console.log("This is abi", abi)
     const abi = JSON.parse("[\n" +
         "    {\n" +
         "      \"constant\": false,\n" +
@@ -185,6 +187,20 @@ const initBlockchain = async () => {
         "      \"type\": \"function\"\n" +
         "    },\n" +
         "    {\n" +
+        "      \"constant\": false,\n" +
+        "      \"inputs\": [\n" +
+        "        {\n" +
+        "          \"name\": \"x\",\n" +
+        "          \"type\": \"string\"\n" +
+        "        }\n" +
+        "      ],\n" +
+        "      \"name\": \"set\",\n" +
+        "      \"outputs\": \[\],\n" +
+        "      \"payable\": false,\n" +
+        "      \"stateMutability\": \"nonpayable\",\n" +
+        "      \"type\": \"function\"\n" +
+        "    },\n" +
+        "    {\n" +
         "      \"constant\": true,\n" +
         "      \"inputs\": [\n" +
         "        {\n" +
@@ -248,6 +264,20 @@ const initBlockchain = async () => {
         "        {\n" +
         "          \"name\": \"\",\n" +
         "          \"type\": \"address\"\n" +
+        "        }\n" +
+        "      ],\n" +
+        "      \"payable\": false,\n" +
+        "      \"stateMutability\": \"view\",\n" +
+        "      \"type\": \"function\"\n" +
+        "    },\n" +
+        "    {\n" +
+        "      \"constant\": true,\n" +
+        "      \"inputs\": \[\],\n" +
+        "      \"name\": \"get\",\n" +
+        "      \"outputs\": [\n" +
+        "        {\n" +
+        "          \"name\": \"\",\n" +
+        "          \"type\": \"string\"\n" +
         "        }\n" +
         "      ],\n" +
         "      \"payable\": false,\n" +

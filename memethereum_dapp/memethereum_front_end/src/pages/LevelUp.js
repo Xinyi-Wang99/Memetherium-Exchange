@@ -11,6 +11,7 @@ import ZombieCard from "../components/zombieCard";
 import { ethers } from "ethers";
 
 function mapStateToProps(state) {
+  console.log(state)
   return {
     web3Instance: state.web3Instance,
     CZ: state.CZ,
