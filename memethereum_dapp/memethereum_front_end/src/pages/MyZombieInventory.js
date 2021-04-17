@@ -3,6 +3,16 @@ import { Card, Grid, Input, Segment, Pagination } from "semantic-ui-react";
 import { connect } from "react-redux";
 import ZombieCard from "../components/zombieCard";
 
+/*import Ipfs from "./Ipfs.js";
+
+let IpfsInstance = new Ipfs();
+let image_location = IpfsInstance.getLocation();*/
+
+var imagething = {
+  image_location: null
+}
+export { imagething };
+
 function mapStateToProps(state) {
   return {
     CZ: state.CZ,
@@ -32,7 +42,7 @@ class MyZombieInventory extends Component {
     this.makeZombieCards();
   };
   makeZombieCards = async () => {
-    const myZombies = await this.props.CZ.getZombiesByOwner(this.props.userAddress);
+    /*const myZombies = await this.props.CZ.getZombiesByOwner(this.props.userAddress);
     let zombieTable = [];
     for (
       var i = this.state.activePage * 9 - 9;
@@ -61,16 +71,20 @@ class MyZombieInventory extends Component {
         break;
       }
     }
-    this.setState({ zombieTable });
+    this.setState({ zombieTable });*/
   };
 
   render() {
+    // console.log("image variable:", imagething.image_location);
     return (
       <div>
         <hr />
         <h2> Your Memes </h2>
         This page shows all of the memes that you have created or obtained through trading.
         <hr />
+        <main className="container">
+          <img src ={`https://ipfs.io/ipfs/${imagething.image_location}`} alt =""/>
+        </main>
         <Grid columns={2} verticalAlign="middle">
           <Grid.Column>
             <Segment secondary>
@@ -100,3 +114,4 @@ class MyZombieInventory extends Component {
 }
 
 export default connect(mapStateToProps)(MyZombieInventory);
+
