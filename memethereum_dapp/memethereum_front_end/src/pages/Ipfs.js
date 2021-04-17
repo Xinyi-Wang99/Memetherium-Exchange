@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 
+import {imagething} from "./MyZombieInventory.js";
+
 const IPFS = require('ipfs-api')
 const ipfs = new IPFS({host: 'ipfs.infura.io', port:5001, protocol:'https'})
-
-
 
 export default class Ipfs extends Component{
 
@@ -28,6 +28,10 @@ export default class Ipfs extends Component{
         }
     }
 
+    getLocation() {
+        return this.state.ipfsHash;
+    }
+
     onSubmit(event){
         event.preventDefault()
         ipfs.files.add(this.state.buffer, (error, result) => {
@@ -36,8 +40,11 @@ export default class Ipfs extends Component{
                 return
             }
             this.setState({ipfsHash : result[0].hash})
+            // image_location = this.state.ipfsHash;
+            imagething.image_location = this.state.ipfsHash;
         })
         console.log('this is from IPFS', this.props.userAddress)
+        console.log("image variable:", this.state.ipfsHash)
 
     }
 
@@ -60,4 +67,5 @@ export default class Ipfs extends Component{
     }
 
 }
+
 
