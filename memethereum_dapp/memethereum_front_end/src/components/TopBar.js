@@ -50,16 +50,16 @@ class TopBar extends Component {
 
           <Menu.Item position="right">
             <Link to={{ pathname: "/" }}>
-              <Header size="large">CryptoZombies at CSU!!! </Header>
+              <Header size="large"> The Great Memetherium Exchange </Header>
             </Link>
           </Menu.Item>
         </Menu>
         <div className="center">
-          <h2>The most awesome zombies in the whole wide universe!</h2>
+          <h2>Create and Trade! The possibilities are endless!</h2>
         </div>
         Your account address: {this.props.userAddress}
         <br />
-        You own {this.props.userZombieCount} zombie(s) out of a total of approximately {this.props.totalZombieCount}.
+        You own {this.props.userZombieCount} meme(s) out of a total of approximately {this.props.totalZombieCount}.
         <hr />
       </div>
     );
