@@ -68,9 +68,8 @@ class MyZombieInventory extends Component {
     return (
       <div>
         <hr />
-        <h2> Your Zombie Inventory </h2>
-        The zombies you own have a yellow background; clicking anywhere on a
-        yellow card will bring up a list of actions you can perform.
+        <h2> Your Memes </h2>
+        This page shows all of the memes that you have created or obtained through trading.
         <hr />
         <Grid columns={2} verticalAlign="middle">
           <Grid.Column>
