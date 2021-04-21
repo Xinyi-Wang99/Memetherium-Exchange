@@ -1,4 +1,4 @@
-import CryptoZombiesContract from "../contract_ABI/CryptoZombies.sol/CryptoZombies.json";
+import MemetheriumContract from "../contract_ABI/memetherium.sol/memetherium.json";
 import store from "../redux/store";
 import { ethers } from "ethers";
 
@@ -41,9 +41,9 @@ const initBlockchain = async () => {
 
     // initialize shadow contract
 
-    let CZ = null;
+    let MEME = null;
     console.log("READ ABI");
-    console.log(CryptoZombiesContract);
+    console.log(MemetheriumContract);
     const abi = JSON.parse(JSON.stringify([
         {
             "constant": false,
@@ -61,77 +61,6 @@ const initBlockchain = async () => {
             "outputs": [],
             "payable": true,
             "stateMutability": "payable",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "name": "_zombieId",
-                    "type": "uint256"
-                }
-            ],
-            "name": "levelUp",
-            "outputs": [],
-            "payable": true,
-            "stateMutability": "payable",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "name": "_zombieId",
-                    "type": "uint256"
-                },
-                {
-                    "name": "_kittyId",
-                    "type": "uint256"
-                }
-            ],
-            "name": "feedOnKitty",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": true,
-            "inputs": [
-                {
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "name": "zombies",
-            "outputs": [
-                {
-                    "name": "name",
-                    "type": "string"
-                },
-                {
-                    "name": "dna",
-                    "type": "uint256"
-                },
-                {
-                    "name": "level",
-                    "type": "uint32"
-                },
-                {
-                    "name": "readyTime",
-                    "type": "uint32"
-                },
-                {
-                    "name": "winCount",
-                    "type": "uint16"
-                },
-                {
-                    "name": "lossCount",
-                    "type": "uint16"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "view",
             "type": "function"
         },
         {
@@ -157,15 +86,6 @@ const initBlockchain = async () => {
             "type": "function"
         },
         {
-            "constant": false,
-            "inputs": [],
-            "name": "withdraw",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
             "constant": true,
             "inputs": [
                 {
@@ -173,7 +93,7 @@ const initBlockchain = async () => {
                     "type": "address"
                 }
             ],
-            "name": "getZombiesByOwner",
+            "name": "getZMemesByOwner",
             "outputs": [
                 {
                     "name": "",
@@ -188,11 +108,15 @@ const initBlockchain = async () => {
             "constant": false,
             "inputs": [
                 {
-                    "name": "x",
+                    "name": "_memeId",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_caption",
                     "type": "string"
                 }
             ],
-            "name": "set",
+            "name": "changeCaption",
             "outputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
@@ -206,11 +130,23 @@ const initBlockchain = async () => {
                     "type": "uint256"
                 }
             ],
-            "name": "zombieToOwner",
+            "name": "memes",
             "outputs": [
                 {
-                    "name": "",
-                    "type": "address"
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "name": "caption",
+                    "type": "string"
+                },
+                {
+                    "name": "ipfsHash",
+                    "type": "string"
+                },
+                {
+                    "name": "readyTime",
+                    "type": "uint32"
                 }
             ],
             "payable": false,
@@ -219,31 +155,8 @@ const initBlockchain = async () => {
         },
         {
             "constant": false,
-            "inputs": [
-                {
-                    "name": "_address",
-                    "type": "address"
-                }
-            ],
-            "name": "setKittyContractAddress",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "name": "_zombieId",
-                    "type": "uint256"
-                },
-                {
-                    "name": "_newDna",
-                    "type": "uint256"
-                }
-            ],
-            "name": "changeDna",
+            "inputs": [],
+            "name": "withdraw",
             "outputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
@@ -270,34 +183,6 @@ const initBlockchain = async () => {
         },
         {
             "constant": true,
-            "inputs": [],
-            "name": "get",
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "string"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "name": "_seconds",
-                    "type": "uint256"
-                }
-            ],
-            "name": "setCooldownTime",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": true,
             "inputs": [
                 {
                     "name": "_owner",
@@ -319,20 +204,6 @@ const initBlockchain = async () => {
             "constant": false,
             "inputs": [],
             "name": "renounceOwnership",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "name": "_name",
-                    "type": "string"
-                }
-            ],
-            "name": "createRandomZombie",
             "outputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
@@ -370,7 +241,7 @@ const initBlockchain = async () => {
             "constant": false,
             "inputs": [
                 {
-                    "name": "_zombieId",
+                    "name": "_memeId",
                     "type": "uint256"
                 },
                 {
@@ -385,35 +256,22 @@ const initBlockchain = async () => {
             "type": "function"
         },
         {
-            "constant": false,
+            "constant": true,
             "inputs": [
                 {
-                    "name": "_fee",
+                    "name": "",
                     "type": "uint256"
                 }
             ],
-            "name": "setLevelUpFee",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
+            "name": "memeToOwner",
+            "outputs": [
                 {
-                    "name": "_zombieId",
-                    "type": "uint256"
-                },
-                {
-                    "name": "_targetId",
-                    "type": "uint256"
+                    "name": "",
+                    "type": "address"
                 }
             ],
-            "name": "attack",
-            "outputs": [],
             "payable": false,
-            "stateMutability": "nonpayable",
+            "stateMutability": "view",
             "type": "function"
         },
         {
@@ -429,6 +287,50 @@ const initBlockchain = async () => {
             "payable": false,
             "stateMutability": "nonpayable",
             "type": "function"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "name": "memeId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "name": "caption",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "name": "ipfsHash",
+                    "type": "string"
+                }
+            ],
+            "name": "NewMeme",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "name": "previousOwner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "OwnershipTransferred",
+            "type": "event"
         },
         {
             "anonymous": false,
@@ -473,525 +375,13 @@ const initBlockchain = async () => {
             ],
             "name": "Approval",
             "type": "event"
-        },
-        {
-            "anonymous": false,
-            "inputs": [
-                {
-                    "indexed": false,
-                    "name": "zombieId",
-                    "type": "uint256"
-                },
-                {
-                    "indexed": false,
-                    "name": "name",
-                    "type": "string"
-                },
-                {
-                    "indexed": false,
-                    "name": "dna",
-                    "type": "uint256"
-                }
-            ],
-            "name": "NewZombie",
-            "type": "event"
-        },
-        {
-            "anonymous": false,
-            "inputs": [
-                {
-                    "indexed": true,
-                    "name": "previousOwner",
-                    "type": "address"
-                },
-                {
-                    "indexed": true,
-                    "name": "newOwner",
-                    "type": "address"
-                }
-            ],
-            "name": "OwnershipTransferred",
-            "type": "event"
         }
     ]))
-    // const abi = JSON.parse(CryptoZombiesContract.abi);
-    // console.log("This is abi", abi)
-    // const abi = JSON.parse("[\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_approved\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_tokenId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"approve\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": true,\n" +
-    //     "      \"stateMutability\": \"payable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_zombieId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"levelUp\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": true,\n" +
-    //     "      \"stateMutability\": \"payable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_zombieId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_kittyId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"feedOnKitty\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": true,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"zombies\",\n" +
-    //     "      \"outputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"name\",\n" +
-    //     "          \"type\": \"string\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"dna\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"level\",\n" +
-    //     "          \"type\": \"uint32\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"readyTime\",\n" +
-    //     "          \"type\": \"uint32\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"winCount\",\n" +
-    //     "          \"type\": \"uint16\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"lossCount\",\n" +
-    //     "          \"type\": \"uint16\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"view\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_from\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_to\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_tokenId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"transferFrom\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": true,\n" +
-    //     "      \"stateMutability\": \"payable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [],\n" +
-    //     "      \"name\": \"withdraw\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": true,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_owner\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"getZombiesByOwner\",\n" +
-    //     "      \"outputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"\",\n" +
-    //     "          \"type\": \"uint256[]\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"view\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"x\",\n" +
-    //     "          \"type\": \"string\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"set\",\n" +
-    //     "      \"outputs\": \[\],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": true,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"zombieToOwner\",\n" +
-    //     "      \"outputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"view\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_address\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"setKittyContractAddress\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_zombieId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_newDna\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"changeDna\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": true,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_tokenId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"ownerOf\",\n" +
-    //     "      \"outputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"view\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": true,\n" +
-    //     "      \"inputs\": \[\],\n" +
-    //     "      \"name\": \"get\",\n" +
-    //     "      \"outputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"\",\n" +
-    //     "          \"type\": \"string\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"view\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_seconds\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"setCooldownTime\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": true,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_owner\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"balanceOf\",\n" +
-    //     "      \"outputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"view\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [],\n" +
-    //     "      \"name\": \"renounceOwnership\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_name\",\n" +
-    //     "          \"type\": \"string\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"createRandomZombie\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": true,\n" +
-    //     "      \"inputs\": [],\n" +
-    //     "      \"name\": \"owner\",\n" +
-    //     "      \"outputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"view\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": true,\n" +
-    //     "      \"inputs\": [],\n" +
-    //     "      \"name\": \"isOwner\",\n" +
-    //     "      \"outputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"\",\n" +
-    //     "          \"type\": \"bool\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"view\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_zombieId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_newName\",\n" +
-    //     "          \"type\": \"string\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"changeName\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_fee\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"setLevelUpFee\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_zombieId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"_targetId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"attack\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"constant\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"name\": \"newOwner\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"transferOwnership\",\n" +
-    //     "      \"outputs\": [],\n" +
-    //     "      \"payable\": false,\n" +
-    //     "      \"stateMutability\": \"nonpayable\",\n" +
-    //     "      \"type\": \"function\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"anonymous\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": true,\n" +
-    //     "          \"name\": \"_from\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": true,\n" +
-    //     "          \"name\": \"_to\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": true,\n" +
-    //     "          \"name\": \"_tokenId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"Transfer\",\n" +
-    //     "      \"type\": \"event\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"anonymous\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": true,\n" +
-    //     "          \"name\": \"_owner\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": true,\n" +
-    //     "          \"name\": \"_approved\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": true,\n" +
-    //     "          \"name\": \"_tokenId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"Approval\",\n" +
-    //     "      \"type\": \"event\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"anonymous\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": false,\n" +
-    //     "          \"name\": \"zombieId\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": false,\n" +
-    //     "          \"name\": \"name\",\n" +
-    //     "          \"type\": \"string\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": false,\n" +
-    //     "          \"name\": \"dna\",\n" +
-    //     "          \"type\": \"uint256\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"NewZombie\",\n" +
-    //     "      \"type\": \"event\"\n" +
-    //     "    },\n" +
-    //     "    {\n" +
-    //     "      \"anonymous\": false,\n" +
-    //     "      \"inputs\": [\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": true,\n" +
-    //     "          \"name\": \"previousOwner\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        },\n" +
-    //     "        {\n" +
-    //     "          \"indexed\": true,\n" +
-    //     "          \"name\": \"newOwner\",\n" +
-    //     "          \"type\": \"address\"\n" +
-    //     "        }\n" +
-    //     "      ],\n" +
-    //     "      \"name\": \"OwnershipTransferred\",\n" +
-    //     "      \"type\": \"event\"\n" +
-    //     "    }\n" +
-    //     "  ]");
 
-   // CZ = new ethers.Contract('0xf01b5d859b2a73DBE407f4553b06ffF50F19b7e4', abi, signer);
-    CZ = new ethers.Contract('0x34dC208f7aEFB4E04E77EE9651B25F8bF207C40d', abi, signer);
+    MEME = new ethers.Contract('0x34dC208f7aEFB4E04E77EE9651B25F8bF207C40d', abi, signer);
     // put state data into the REDUX store for easy access from other pages and components
-
-    let data = { provider, signer, CZ, userAddress };
+    console.log(MEME);
+    let data = { provider, signer, MEME, userAddress };
     store.dispatch(blockchainInitialized(data));
   return data;
 }

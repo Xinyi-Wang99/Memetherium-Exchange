@@ -4,16 +4,15 @@ import { connect } from "react-redux";
 
 import { Button } from "semantic-ui-react";
 
-import CreateZombie from "./CreateZombie";
-
 
 import { Menu, Header } from "semantic-ui-react";
 
 function mapStateToProps(state) {
   return {
     userAddress: state.userAddress,
-    userZombieCount: state.userZombieCount,
-    totalZombieCount: state.totalZombieCount
+    userMemeCount: state.userMemeCount,
+    totalMemeCount: state.totalMemeCount,
+      MEME: state.MEME,
   };
 }
 
@@ -53,7 +52,7 @@ class TopBar extends Component {
         </div>
         Your account address: {this.props.userAddress}
         <br />
-        You own {this.props.userZombieCount} zombie(s) out of a total of approximately {this.props.totalZombieCount}.
+        You own {this.props.MEME} meme(s) out of a total of approximately {this.props.totalMemeCount}.
         <hr />
       </div>
     );

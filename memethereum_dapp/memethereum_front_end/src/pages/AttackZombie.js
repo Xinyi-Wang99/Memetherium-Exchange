@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Button, Header, Icon, Form, Message } from "semantic-ui-react";
 import ZombieCard from "../components/zombieCard";
-import getZombieCount from "../utils/getZombieCount";
+import getZombieCount from "../utils/getMemeCount";
 
 function mapStateToProps(state) {
   return {

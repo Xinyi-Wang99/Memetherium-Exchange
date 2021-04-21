@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import initBlockchain from "./utils/initBlockchain";
-import getZombieCount from "./utils/getZombieCount";
+import getMemeCount from "./utils/getMemeCount";
 
 import { HashRouter, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
@@ -12,9 +12,7 @@ import Greeting from "./pages/Greeting";
 import CreateMeme from "./pages/CreateMeme";
 // import AddCaption from "./pages/AddCaption";
 
-import Ipfs from './pages/Ipfs';
-// import IPFS.js from "./pages/Ipfs"
-
+import UploadMeme from './pages/UploadMeme';
 import MyZombieInventory from "./pages/MyZombieInventory";
 import ZombieInventory from "./pages/ZombieInventory";
 import AttackZombie from "./pages/AttackZombie";
@@ -48,10 +46,8 @@ class App extends Component {
 
     componentDidMount = async () => {
       try {
-          const CZInfo = await initBlockchain(); // from utils directory;  connect to provider and to metamask or other signer
-          await getZombieCount(CZInfo.CZ, CZInfo.userAddress); // get user count and total count of zombies
-          this.setState({userAddress: CZInfo.userAddress});
-          console.log(CZInfo);
+          const MemeInfo = await initBlockchain(); // from utils directory;  connect to provider and to metamask or other signer
+          await getMemeCount(MemeInfo.MEME, MemeInfo.userAddress); // get user count and total count of zombies
       } catch (error) {
           // Catch any errors for any of the above operations.
           alert(`Failed to load provider, signer, or contract. Check console for details.`);
@@ -81,7 +77,7 @@ class App extends Component {
               <Route exact path="/" component={CreateMeme}/>
               {/*<Route exact path="/Add-Caption" component={AddCaption}/>*/}
               <Route exact path="/uploadMeme">
-                  <Ipfs userAddress ={this.state.userAddress}/>
+                  <UploadMeme userAddress ={this.state.userAddress}/>
               </Route>
                 <Route exact path="/myZombieInventory" component={MyZombieInventory}/>
               <Route exact path="/ZombieInventory" component={ZombieInventory}/>

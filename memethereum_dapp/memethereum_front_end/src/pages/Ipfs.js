@@ -37,7 +37,7 @@ export default class Ipfs extends Component{
             }
             this.setState({ipfsHash : result[0].hash})
         })
-        console.log('this is from IPFS', this.props.userAddress)
+        console.log('this is from IPFS', this.props.ipfsHash)
 
     }
 
