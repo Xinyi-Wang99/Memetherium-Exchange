@@ -1,4 +1,4 @@
-import CryptoZombiesContract from "../contract_ABI/CryptoZombies.sol/CryptoZombies.json";
+import CryptoZombiesContract from "../contract_ABI/Memetherium.sol/Memetherium.json";
 import store from "../redux/store";
 import { ethers } from "ethers";
 
