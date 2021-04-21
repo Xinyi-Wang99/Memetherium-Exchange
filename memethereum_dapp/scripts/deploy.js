@@ -9,10 +9,11 @@ async function main() {
 
     console.log("Account balance:", (await deployer.getBalance()).toString());
 
-    const MEME = await ethers.getContractFactory("memetherium");
-    const Meme = await MEME.deploy();
+    const CZF = await ethers.getContractFactory("CryptoZombies");
+    const Meme =  await ethers.getContractFactory
+    const CZ = await CZF.deploy();
 
-    console.log("Memetherium contract address:", Meme.address);
+    console.log("CryptoZombies contract address:", CZ.address);
 }
 
 main()
