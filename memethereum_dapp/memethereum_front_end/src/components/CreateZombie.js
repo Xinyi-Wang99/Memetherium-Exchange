@@ -54,7 +54,28 @@ class CreateZombie extends Component {
     }
   }
 
-  onSubmit(event){
+  onSubmit = async event => {
+    // event.preventDefault();
+    // this.setState({
+    //   loading: true,
+    //   errorMessage: "",
+    //   message: "waiting for blockchain transaction to complete..."
+    // });
+    // try {
+    //   await this.props.CZ.createRandomZombie(this.state.value) // contains the zombie name
+    //   this.setState({
+    //     loading: false,
+    //     message: "You have created a New Zombie"
+    //   });
+    //   getZombieCount(this.props.CZ, this.props.userAddress);
+    // } catch (err) {
+    //   this.setState({
+    //     loading: false,
+    //     errorMessage: err.message,
+    //     message: "User rejected transaction or else this account is already in use, please try another name."
+    //   });
+    // }
+    
     event.preventDefault()
     ipfs.files.add(this.state.buffer, (error, result) => {
       if(error){
@@ -64,31 +85,7 @@ class CreateZombie extends Component {
       this.setState({ipfsHash : result[0].hash})
     })
     console.log('this is from IPFS', this.props.userAddress)
-
-  }
-
-  // onSubmit = async event => {
-  //   event.preventDefault();
-  //   this.setState({
-  //     loading: true,
-  //     errorMessage: "",
-  //     message: "waiting for blockchain transaction to complete..."
-  //   });
-  //   try {
-  //     await this.props.CZ.createRandomZombie(this.state.value) // contains the zombie name
-  //     this.setState({
-  //       loading: false,
-  //       message: "You have created a New Zombie"
-  //     });
-  //     getZombieCount(this.props.CZ, this.props.userAddress);
-  //   } catch (err) {
-  //     this.setState({
-  //       loading: false,
-  //       errorMessage: err.message,
-  //       message: "User rejected transaction or else this account is already in use, please try another name."
-  //     });
-  //   }
-  // };
+  };
 
 
   render() {
