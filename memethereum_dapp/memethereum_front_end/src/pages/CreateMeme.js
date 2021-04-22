@@ -5,25 +5,21 @@ import { Button, Header, Icon, Modal } from "semantic-ui-react";
 export default class CreateMeme extends Component {
     constructor(props) {
         super(props);
-        this.openImage = this.openImage.bind(this);
-        this.getBase64Image = this.getBase64Image.bind(this);
         this.state = {
+            memeImages: [],
             currentImage: "",
             currImage: "",
-            isLoaded: false,
-            index: -1,
-            memeImages: [],
-            topText: "",
-            bottomText: "",
-            createdMemes: [],
+            index: 0,
             modalOpen: false,
             loading: true,
+            topText: "",
+            bottomText: "",
             topY: "10%",
             topX: "50%",
             bottomX: "50%",
-            bottomY: "90%"
+            bottomY: "90%",
+            base64: ""
         }
-
     }
 
     componentDidMount() {
@@ -46,11 +42,10 @@ export default class CreateMeme extends Component {
 
     openImage = (e, i) =>{
         this.setState({
-            currentImage: e.target,
-            modalOpen: true,
-            index: i,
-            currImage: this.state.memeImages[i],
-            isLoaded: true
+            currentImage: e.target, //new image created using api returned image - *has different attributes
+            currImage: this.state.memeImages[i], //api returned image
+            modalOpen: true, // open modal when clicked on
+            index: i // index of currImage on memeImages
         });
     };
 
@@ -64,7 +59,7 @@ export default class CreateMeme extends Component {
         canvas.height = svgSize.height;
         const img = document.createElement("img");
         img.setAttribute("src", "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData))));
-        img.onload = function() {
+        img.onload = function () {
             canvas.getContext("2d").drawImage(img, 0, 0);
             const canvasdata = canvas.toDataURL("image/png");
             const a = document.createElement("a");
@@ -76,16 +71,17 @@ export default class CreateMeme extends Component {
     }
 
     getBase64Image(url) {
-            var img = new Image();
-            img.src = url;
-            img.crossOrigin = "Anonymous"
-            var canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
-            var dataURL = canvas.toDataURL("image/png");
-            return dataURL;
+        var img = new Image();
+        img.src = url;
+        img.crossOrigin = "Anonymous"
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataUrl = canvas.toDataURL("image/png");
+        console.log(dataUrl);
+        return dataUrl;
     }
 
     render() {
@@ -102,11 +98,10 @@ export default class CreateMeme extends Component {
             <div className="meme-generator">
                 <Modal open={this.state.modalOpen} onClose={this.handleClose}>
                     <Header
-                        icon="browser"
-                        content="Add a Caption!"
-                    />
+                        icon="edit"
+                        content="Add a Caption!"/>
                     <Modal.Content>
-                        {(this.getBase64Image(this.state.currImage.url) && this.state.topText && this.state.bottomText) ?
+                        {(this.state.topText && this.state.bottomText) ?
                             <svg
                                 width={newWidth}
                                 id="svg_ref"
@@ -115,11 +110,10 @@ export default class CreateMeme extends Component {
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlnsXlink="http://www.w3.org/1999/xlink">
                                 <image
-                                    ref={el => { this.imageRef = el }}
-                                    xlinkHref={this.getBase64Image(this.state.currImage.url)}
+                                    ref={el => {this.imageRef = el}}
+                                    xlinkHref={(this.getBase64Image(this.state.currImage.url) != "data:,") ? this.getBase64Image(this.state.currImage.url) : this.state.currImage.url}
                                     height={newWidth/(this.state.currImage.width/this.state.currImage.height)}
-                                    width={newWidth}
-                                />
+                                    width={newWidth}/>
                                 <text
                                     style={textStyle}
                                     x={this.state.topX}
