@@ -5,26 +5,10 @@ import "./memeFactory.sol";
 
 contract MemeHelper is MemeFactory {
 
-//    uint levelUpFee = 0.001 ether;
-//
-//    modifier aboveLevel(uint _level, uint _zombieId) {
-//        require(zombies[_zombieId].level >= _level);
-//        _;
-//    }
-
-    /* function withdraw() external onlyOwner {
-        address payable _owner = address(uint160(owner));
-        _owner.transfer(address(this).balance);
+    modifier onlyOwner() {
+        require(isOwner());
+        _;
     }
-*/
-//    function setLevelUpFee(uint _fee) external onlyOwner {
-//        levelUpFee = _fee;
-//    }
-//
-//    function levelUp(uint _zombieId) external payable {
-//        require(msg.value == levelUpFee);
-//        zombies[_zombieId].level = zombies[_zombieId].level.add(1);
-//    }
 
     modifier onlyOwnerOf(uint _memeId) {
         require(msg.sender == memeToOwner[_memeId]);
@@ -39,7 +23,7 @@ contract MemeHelper is MemeFactory {
         memes[_memeId].caption = _caption;
     }
 
-    function getZMemesByOwner(address _owner) external view returns(uint[] memory) {
+    function getMemesByOwner(address _owner) external view returns(uint[] memory) {
         uint[] memory result = new uint[](ownerMemeCount[_owner]);
         uint counter = 0;
         for (uint i = 0; i < memes.length; i++) {
@@ -48,7 +32,7 @@ contract MemeHelper is MemeFactory {
             counter++;
             }
         }
-    return result;
+        return result;
     }
 
     function withdraw() external onlyOwner {

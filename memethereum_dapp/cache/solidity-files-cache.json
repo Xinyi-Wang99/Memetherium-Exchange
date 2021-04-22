@@ -1,38 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/zombieattack.sol": {
-      "lastModificationDate": 1618975648891,
-      "contentHash": "2292ccf606ef178be3642c5844c094ae",
-      "sourceName": "contracts/zombieattack.sol",
-      "solcConfig": {
-        "version": "0.5.1",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
-    },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/erc721.sol": {
-      "lastModificationDate": 1617830428559,
+    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/erc721.sol": {
+      "lastModificationDate": 1619028302700,
       "contentHash": "7155a007b3daf1b2f3b780fc4769c72c",
       "sourceName": "contracts/erc721.sol",
       "solcConfig": {
@@ -65,108 +35,8 @@
         "ERC721"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/safemath.sol": {
-      "lastModificationDate": 1617830428559,
-      "contentHash": "d389aeacd26877e3954382c22f8a9f6b",
-      "sourceName": "contracts/safemath.sol",
-      "solcConfig": {
-        "version": "0.5.1",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.5.0 <0.6.0"
-      ],
-      "artifacts": [
-        "SafeMath",
-        "SafeMath16",
-        "SafeMath32"
-      ]
-    },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/zombiefeeding.sol": {
-      "lastModificationDate": 1618977676409,
-      "contentHash": "3ea1b66d6685898e09a484a6e524e127",
-      "sourceName": "contracts/zombiefeeding.sol",
-      "solcConfig": {
-        "version": "0.5.1",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
-    },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/ownable.sol": {
-      "lastModificationDate": 1617830428559,
-      "contentHash": "dc3caf2e5c7f5201fb684bfef49413a6",
-      "sourceName": "contracts/ownable.sol",
-      "solcConfig": {
-        "version": "0.5.1",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.5.0 <0.6.0"
-      ],
-      "artifacts": [
-        "Ownable"
-      ]
-    },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/memeownership.sol": {
-      "lastModificationDate": 1618977965188,
+    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/memeownership.sol": {
+      "lastModificationDate": 1619050148212,
       "contentHash": "89edf9371149f0e67de064084755fbe2",
       "sourceName": "contracts/memeownership.sol",
       "solcConfig": {
@@ -203,9 +73,45 @@
         "MemeOwnership"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/memehelper.sol": {
-      "lastModificationDate": 1618977907388,
-      "contentHash": "db13b996ca18b67c266f28d777fb94d9",
+    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/safemath.sol": {
+      "lastModificationDate": 1619028302701,
+      "contentHash": "d389aeacd26877e3954382c22f8a9f6b",
+      "sourceName": "contracts/safemath.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0 <0.6.0"
+      ],
+      "artifacts": [
+        "SafeMath",
+        "SafeMath16",
+        "SafeMath32"
+      ]
+    },
+    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/memehelper.sol": {
+      "lastModificationDate": 1619050111521,
+      "contentHash": "775b8591510c6500d6a0003447f8e55f",
       "sourceName": "contracts/memehelper.sol",
       "solcConfig": {
         "version": "0.5.1",
@@ -239,9 +145,9 @@
         "MemeHelper"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/memeFactory.sol": {
-      "lastModificationDate": 1618978538009,
-      "contentHash": "6e4d7bde6bced7d18df69b6299804106",
+    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/memeFactory.sol": {
+      "lastModificationDate": 1619053956588,
+      "contentHash": "54738e2b2d377412a78b8d0a5b2ac3a4",
       "sourceName": "contracts/memeFactory.sol",
       "solcConfig": {
         "version": "0.5.1",
@@ -276,10 +182,10 @@
         "MemeFactory"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/memetherium.sol": {
-      "lastModificationDate": 1618975145645,
-      "contentHash": "de8476e7e763307edd782b4a6785aced",
-      "sourceName": "contracts/memetherium.sol",
+    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/ownable.sol": {
+      "lastModificationDate": 1619049797209,
+      "contentHash": "56ae247cc35cbb019ef7d86b7f8fa6be",
+      "sourceName": "contracts/ownable.sol",
       "solcConfig": {
         "version": "0.5.1",
         "settings": {
@@ -303,17 +209,18 @@
         }
       },
       "imports": [
-        "./memeFactory.sol"
+        "./erc721.sol",
+        "./memehelper.sol"
       ],
       "versionPragmas": [
         ">=0.5.0 <0.6.0"
       ],
       "artifacts": [
-        "memetherium"
+        "Ownable"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS455/HW2/test/Memetherium-Exchange/memethereum_dapp/contracts/Memetherium.sol": {
-      "lastModificationDate": 1618979435998,
+    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/Memetherium.sol": {
+      "lastModificationDate": 1619028302700,
       "contentHash": "8ae8a302ce412d437a3ed2eba44f6a3d",
       "sourceName": "contracts/Memetherium.sol",
       "solcConfig": {
@@ -347,6 +254,66 @@
       "artifacts": [
         "Memetherium"
       ]
+    },
+    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/zombieattack.sol": {
+      "lastModificationDate": 1619028302701,
+      "contentHash": "2292ccf606ef178be3642c5844c094ae",
+      "sourceName": "contracts/zombieattack.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": []
+    },
+    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/zombiefeeding.sol": {
+      "lastModificationDate": 1619028302702,
+      "contentHash": "3ea1b66d6685898e09a484a6e524e127",
+      "sourceName": "contracts/zombiefeeding.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": []
     }
   }
 }

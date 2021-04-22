@@ -2,7 +2,7 @@ import { Button, Icon, Form } from "semantic-ui-react";
 import React from "react";
 
 function AddCaption({ currentImage, topText, bottomText, handleTextChange, convert, loading }) {
-    const { src, alt } = currentImage;
+    const{src, alt } = currentImage;
     return (
         <div>
             {(src) ?

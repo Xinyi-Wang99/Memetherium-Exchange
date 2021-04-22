@@ -1,69 +1,62 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-
 import { Button } from "semantic-ui-react";
-
-import CreateZombie from "./CreateZombie";
-
-
 import { Menu, Header } from "semantic-ui-react";
-
-function mapStateToProps(state) {
-  return {
-    userAddress: state.userAddress,
-    userZombieCount: state.userZombieCount,
-    totalZombieCount: state.totalZombieCount
-  };
-}
+import UploadMeme from "./UploadMeme";
 
 // This renders the topbar on the webpage as well as the lines listing address and zombie count.
 
-class TopBar extends Component {
-  render() {
+export default  class TopBar extends Component {
+
+    constructor(props) {
+        super(props)
+        this.handleCreateMeme = this.handleCreateMeme.bind(this)
+    }
+    handleCreateMeme(){
+        console.log("createMeme")
+        return(
+            <div>
+                <UploadMeme/>
+            </div>
+        )
+
+    }
+
+    render() {
     return (
       <div>
         <Menu style={{ marginTop: "10px", backgroundColor: "Salmon" }}>
           <Menu.Item>
-              <Link to={{ pathname: "/" }}>
-                  <Button primary>Create Meme</Button>
-              </Link>
+                  // <Button primary onClick = {this.handleCreateMeme}>
+                  //     Create Meme
+                  // </Button>
+              <UploadMeme state = {this.props.state}/>
           </Menu.Item>
           
           <Menu.Item>
-              <Link to={{ pathname: "/uploadMeme" }}>
                   <Button primary>Upload Memes</Button>
-              </Link>
           </Menu.Item>
 
           <Menu.Item>
-              <Link to={{ pathname: "/myZombieInventory" }}>
                   <Button primary>My Memes</Button>
-              </Link>
           </Menu.Item>
 
           <Menu.Item>
-              <Link to={{ pathname: "/ZombieInventory" }}>
                   <Button primary>Explore</Button>
-              </Link>
           </Menu.Item>
 
           <Menu.Item position="right">
-            <Link to={{ pathname: "/" }}>
               <Header size="large"> The Great Memetherium Exchange </Header>
-            </Link>
           </Menu.Item>
         </Menu>
         <div className="center">
           <h2>Create and Trade! The possibilities are endless!</h2>
         </div>
-        Your account address: {this.props.userAddress}
+        Your account address: {this.props.state.userAddress}
         <br />
-        You own {this.props.userZombieCount} meme(s) out of a total of approximately {this.props.totalZombieCount}.
+        You own {this.props.state.userSupply} meme(s) out of a total of approximately {this.props.state.totalSupply}.
         <hr />
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(TopBar);

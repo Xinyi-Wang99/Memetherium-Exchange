@@ -1,6 +1,6 @@
 async function main() {
 
-    const [deployer] = await ethers.getSigners("localhost:8545");
+    const [deployer] = await ethers.getSigners();
 
     console.log(
         "Deploying contracts with the account:",
@@ -9,7 +9,7 @@ async function main() {
 
     console.log("Account balance:", (await deployer.getBalance()).toString());
 
-    const MEME = await ethers.getContractFactory("memetherium");
+    const MEME = await ethers.getContractFactory("Memetherium");
     const Meme = await MEME.deploy();
 
     console.log("Memetherium contract address:", Meme.address);
