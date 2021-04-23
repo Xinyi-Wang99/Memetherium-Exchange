@@ -22,18 +22,19 @@ contract MemeFactory is Ownable{
 
     Meme[] public memes;
 
-    mapping (uint => address) public memeToOwner;     // ipfsHash point to the address
+    mapping (uint => address) public memeToOwner;     // id point to the address
     mapping (address => uint) ownerMemeCount;           // count how many memes the user have
 
-    function _createMeme(string memory _name, string memory _caption, string memory _ipfsHash) internal{
+    function createMeme(string memory _name, string memory _caption, string memory _ipfsHash) public{
         uint id = memes.push(Meme(_name, _caption, _ipfsHash, uint32( now + cooldownTime ))) - 1 ;
         memeToOwner[id] = msg.sender;
         ownerMemeCount[msg.sender] = ownerMemeCount[msg.sender].add(1);
         emit NewMeme(id, _name, _caption, _ipfsHash);
     }
 
-//    function setCooldownTime(uint _seconds) public onlyOwner {
-//        cooldownTime = _seconds;
-//    }
+
+    function setCooldownTime(uint _seconds) public onlyOwner {
+        cooldownTime = _seconds;
+    }
 
 }
