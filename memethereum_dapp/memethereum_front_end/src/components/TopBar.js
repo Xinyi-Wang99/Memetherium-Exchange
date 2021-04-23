@@ -6,6 +6,7 @@ import UploadMeme from "./UploadMeme";
 const IPFS = require('ipfs-api')
 const ipfs = new IPFS({host: 'ipfs.infura.io', port:5001, protocol:'https'})
 
+
 export default class TopBar extends Component {
 
     constructor(props) {
@@ -57,8 +58,8 @@ export default class TopBar extends Component {
         })
         console.log('this is from IPFS', this.props.userAddress)
         console.log("image variable:", this.state.ipfsHash)
-
     }
+
 
 
     render() {
@@ -106,5 +107,6 @@ export default class TopBar extends Component {
             </div>
         );
     }
+
 }
 
