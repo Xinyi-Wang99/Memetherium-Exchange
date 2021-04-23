@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import { Link } from "react-router-redux";
+
 import { Button } from "semantic-ui-react";
 import { Menu, Header, Icon, Modal } from "semantic-ui-react";
 import {imagething} from "../pages/MyZombieInventory.js";
+
 import UploadMeme from "./UploadMeme";
+import CreateMeme from "../pages/CreateMeme";
+// import MyZombieInventory from "../pages/MyZombieInventory";
+
 const IPFS = require('ipfs-api')
 const ipfs = new IPFS({host: 'ipfs.infura.io', port:5001, protocol:'https'})
 
@@ -12,8 +18,18 @@ export default class TopBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoaded: false,
-            modalOpen: false,
+            isLoadedCreate: false,
+            modalOpenCreate: false,
+
+            isLoadedMyMemes: false,
+            modalOpenMyMemes: false,
+
+            isLoadedExplore: false,
+            modalOpenExplore: false,
+
+            isLoadedUpload: false,
+            modalOpenUpload: false,
+
             topY: "10%",
             topX: "50%",
             bottomX: "50%",
@@ -23,12 +39,42 @@ export default class TopBar extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    handleClose = () => this.setState({ modalOpen: false, bottomText: "", topText: "", loading: true});
+    handleClose = () => this.setState({
+        modalOpenCreate: false,
+        modalOpenMyMemes: false,
+        modalOpenExplore: false,
+        modalOpenUpload: false,
 
-    openImage = (e) =>{
+         bottomText: "",
+         topText: "",
+         loading: true
+    });
+
+    openImageCreate = (e) => {
         this.setState({
-            modalOpen: true,
-            isLoaded: true
+            modalOpenCreate: true,
+            isLoadedCreate: true
+        });
+    }
+
+    openImageMyMemes = (e) => {
+        this.setState({
+            modalOpenMyMemes: true,
+            isLoadedMyMemes: true
+        });
+    }
+
+    openImageExplore = (e) => {
+        this.setState({
+            modalOpenExplore: true,
+            isLoadedExplore: true
+        });
+    }
+
+    openImageUpload = (e) =>{
+        this.setState({
+            modalOpenUpload: true,
+            isLoadedUpload: true
         });
     };
 
@@ -60,12 +106,72 @@ export default class TopBar extends Component {
         console.log("image variable:", this.state.ipfsHash)
     }
 
-
-
     render() {
         return (
             <div>
-                <Modal open={this.state.modalOpen} onClose={this.handleClose}>
+                <Modal open={this.state.modalOpenCreate} onClose={this.handleClose}>
+                    <Header
+                        icon="browser"
+                        content="Meme Creator"
+                    />
+                    <Modal.Content>
+                        <CreateMeme state = {this.props.state}/>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button color="red" onClick={this.handleClose} inverted>
+                            <Icon name="cancel" /> Close
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
+
+                <Modal open={this.state.modalOpenMyMemes} onClose={this.handleClose}>
+                    <Header
+                        icon="browser"
+                        content="My Memes"
+                    />
+
+                    <Modal.Content>
+                        <div>
+                            <main className="container">
+                                <p>
+                                    Welcome to your meme wallet! Here are all of the memes that you have either created or obtained!
+                                </p>
+                            </main>
+                        </div>
+                    </Modal.Content>
+                    
+                    <Modal.Actions>
+                        <Button color="red" onClick={this.handleClose} inverted>
+                            <Icon name="cancel" /> Close
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
+
+                <Modal open={this.state.modalOpenExplore} onClose={this.handleClose}>
+                    <Header
+                        icon="browser"
+                        content="Explore"
+                    />
+
+                    <Modal.Content>
+                        <div>
+                            <main className="container">
+                                <p>
+                                    Welcome to the Explore Page! This page holds memes from other creators!
+                                </p>
+
+                            </main>
+                        </div>
+                    </Modal.Content>
+                    
+                    <Modal.Actions>
+                        <Button color="red" onClick={this.handleClose} inverted>
+                            <Icon name="cancel" /> Close
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
+
+                <Modal open={this.state.modalOpenUpload} onClose={this.handleClose}>
                     <Header
                         icon="browser"
                         content="Upload Meme"
@@ -73,6 +179,7 @@ export default class TopBar extends Component {
                     <Modal.Content>
                         <UploadMeme state = {this.props.state}/>
                     </Modal.Content>
+
                     <Modal.Actions>
                         <Button color="red" onClick={this.handleClose} inverted>
                             <Icon name="cancel" /> Close
@@ -82,17 +189,21 @@ export default class TopBar extends Component {
 
                 <Menu style={{ marginTop: "10px", backgroundColor: "Salmon" }}>
                     <Menu.Item>
-                            <Button primary>Create Meme</Button>
+                            <Button primary onClick={(event) => this.openImageCreate(event)}>Create Meme</Button>
                     </Menu.Item>
+
                     <Menu.Item>
-                            <Button primary>My Memes</Button>
+                            <Button primary onClick={(event) => this.openImageMyMemes(event)}>My Memes</Button>
                     </Menu.Item>
+
                     <Menu.Item>
-                            <Button primary>Explore</Button>
+                            <Button primary onClick={(event) => this.openImageExplore(event)}>Explore</Button>
                     </Menu.Item>
+
                     <Menu.Item>
-                        <Button primary onClick={(event)=> this.openImage(event)}>Upload Meme</Button>
+                        <Button primary onClick={(event)=> this.openImageUpload(event)}>Upload Meme</Button>
                     </Menu.Item>
+
                     <Menu.Item position="right">
                             <Header size="large"> The Great Memetherium Exchange </Header>
                     </Menu.Item>
@@ -109,4 +220,3 @@ export default class TopBar extends Component {
     }
 
 }
-
