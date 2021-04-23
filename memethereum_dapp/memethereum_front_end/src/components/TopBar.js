@@ -7,6 +7,7 @@ import {imagething} from "../pages/MyZombieInventory.js";
 
 import UploadMeme from "./UploadMeme";
 import CreateMeme from "../pages/CreateMeme";
+import MyMemes from "../pages/MyMemes";
 // import MyZombieInventory from "../pages/MyZombieInventory";
 
 const IPFS = require('ipfs-api')
@@ -131,13 +132,7 @@ export default class TopBar extends Component {
                     />
 
                     <Modal.Content>
-                        <div>
-                            <main className="container">
-                                <p>
-                                    Welcome to your meme wallet! Here are all of the memes that you have either created or obtained!
-                                </p>
-                            </main>
-                        </div>
+                        <MyMemes state = {this.props.state}/>
                     </Modal.Content>
                     
                     <Modal.Actions>
