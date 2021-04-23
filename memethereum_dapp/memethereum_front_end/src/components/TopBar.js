@@ -20,8 +20,6 @@ export default class TopBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoadedCreate: false,
-            modalOpenCreate: false,
 
             isLoadedMyMemes: false,
             modalOpenMyMemes: false,
@@ -42,7 +40,6 @@ export default class TopBar extends Component {
     }
 
     handleClose = () => this.setState({
-        modalOpenCreate: false,
         modalOpenMyMemes: false,
         modalOpenExplore: false,
         modalOpenUpload: false,
@@ -51,13 +48,6 @@ export default class TopBar extends Component {
          topText: "",
          loading: true
     });
-
-    openImageCreate = (e) => {
-        this.setState({
-            modalOpenCreate: true,
-            isLoadedCreate: true
-        });
-    }
 
     openImageMyMemes = (e) => {
         this.setState({
@@ -111,21 +101,6 @@ export default class TopBar extends Component {
     render() {
         return (
             <div>
-                <Modal open={this.state.modalOpenCreate} onClose={this.handleClose}>
-                    <Header
-                        icon="browser"
-                        content="Meme Creator"
-                    />
-                    <Modal.Content>
-                        <CreateMeme state = {this.props.state}/>
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <Button color="red" onClick={this.handleClose} inverted>
-                            <Icon name="cancel" /> Close
-                        </Button>
-                    </Modal.Actions>
-                </Modal>
-
                 <Modal open={this.state.modalOpenMyMemes} onClose={this.handleClose}>
                     <Header
                         icon="browser"
@@ -173,10 +148,6 @@ export default class TopBar extends Component {
                 </Modal>
 
                 <Menu style={{ marginTop: "10px", backgroundColor: "Salmon" }}>
-                    <Menu.Item>
-                            <Button primary onClick={(event) => this.openImageCreate(event)}>Create Meme</Button>
-                    </Menu.Item>
-
                     <Menu.Item>
                             <Button primary onClick={(event) => this.openImageMyMemes(event)}>My Memes</Button>
                     </Menu.Item>
