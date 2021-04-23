@@ -8,6 +8,7 @@ import {imagething} from "../pages/MyZombieInventory.js";
 import UploadMeme from "./UploadMeme";
 import CreateMeme from "../pages/CreateMeme";
 import MyMemes from "../pages/MyMemes";
+import Explore from "../pages/Explore";
 // import MyZombieInventory from "../pages/MyZombieInventory";
 
 const IPFS = require('ipfs-api')
@@ -130,11 +131,9 @@ export default class TopBar extends Component {
                         icon="browser"
                         content="My Memes"
                     />
-
                     <Modal.Content>
                         <MyMemes state = {this.props.state}/>
                     </Modal.Content>
-                    
                     <Modal.Actions>
                         <Button color="red" onClick={this.handleClose} inverted>
                             <Icon name="cancel" /> Close
@@ -147,18 +146,9 @@ export default class TopBar extends Component {
                         icon="browser"
                         content="Explore"
                     />
-
                     <Modal.Content>
-                        <div>
-                            <main className="container">
-                                <p>
-                                    Welcome to the Explore Page! This page holds memes from other creators!
-                                </p>
-
-                            </main>
-                        </div>
+                        <Explore state = {this.props.state}/>
                     </Modal.Content>
-                    
                     <Modal.Actions>
                         <Button color="red" onClick={this.handleClose} inverted>
                             <Icon name="cancel" /> Close
