@@ -39,8 +39,8 @@ class App extends Component {
           alert(`Failed to load provider, signer, or contract. Check console for details.`);
           console.log(error);
       }
-      let userSupply= await this.state.MEME.balanceOf(this.state.userAddress);
-      console.log("this is userSupply" ,userSupply);
+      // let userSupply= await this.state.MEME.balanceOf(this.state.userAddress);
+      // console.log("this is userSupply" ,userSupply);
     };
 
   // **************************************************************************
