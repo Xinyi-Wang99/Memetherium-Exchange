@@ -2,7 +2,7 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/erc721.sol": {
-      "lastModificationDate": 1619028302700,
+      "lastModificationDate": 1619153457349,
       "contentHash": "7155a007b3daf1b2f3b780fc4769c72c",
       "sourceName": "contracts/erc721.sol",
       "solcConfig": {
@@ -36,7 +36,7 @@
       ]
     },
     "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/memeownership.sol": {
-      "lastModificationDate": 1619050148212,
+      "lastModificationDate": 1619153457349,
       "contentHash": "89edf9371149f0e67de064084755fbe2",
       "sourceName": "contracts/memeownership.sol",
       "solcConfig": {
@@ -74,7 +74,7 @@
       ]
     },
     "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/safemath.sol": {
-      "lastModificationDate": 1619028302701,
+      "lastModificationDate": 1619153457349,
       "contentHash": "d389aeacd26877e3954382c22f8a9f6b",
       "sourceName": "contracts/safemath.sol",
       "solcConfig": {
@@ -110,7 +110,7 @@
       ]
     },
     "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/memehelper.sol": {
-      "lastModificationDate": 1619050111521,
+      "lastModificationDate": 1619153457349,
       "contentHash": "775b8591510c6500d6a0003447f8e55f",
       "sourceName": "contracts/memehelper.sol",
       "solcConfig": {
@@ -146,7 +146,7 @@
       ]
     },
     "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/memeFactory.sol": {
-      "lastModificationDate": 1619053956588,
+      "lastModificationDate": 1619153457349,
       "contentHash": "54738e2b2d377412a78b8d0a5b2ac3a4",
       "sourceName": "contracts/memeFactory.sol",
       "solcConfig": {
@@ -183,7 +183,7 @@
       ]
     },
     "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/ownable.sol": {
-      "lastModificationDate": 1619049797209,
+      "lastModificationDate": 1619153457349,
       "contentHash": "56ae247cc35cbb019ef7d86b7f8fa6be",
       "sourceName": "contracts/ownable.sol",
       "solcConfig": {
@@ -220,7 +220,7 @@
       ]
     },
     "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/Memetherium.sol": {
-      "lastModificationDate": 1619028302700,
+      "lastModificationDate": 1619153457349,
       "contentHash": "8ae8a302ce412d437a3ed2eba44f6a3d",
       "sourceName": "contracts/Memetherium.sol",
       "solcConfig": {
@@ -254,66 +254,6 @@
       "artifacts": [
         "Memetherium"
       ]
-    },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/zombieattack.sol": {
-      "lastModificationDate": 1619028302701,
-      "contentHash": "2292ccf606ef178be3642c5844c094ae",
-      "sourceName": "contracts/zombieattack.sol",
-      "solcConfig": {
-        "version": "0.5.1",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
-    },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/zombiefeeding.sol": {
-      "lastModificationDate": 1619028302702,
-      "contentHash": "3ea1b66d6685898e09a484a6e524e127",
-      "sourceName": "contracts/zombiefeeding.sol",
-      "solcConfig": {
-        "version": "0.5.1",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
     }
   }
 }

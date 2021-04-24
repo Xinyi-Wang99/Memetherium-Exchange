@@ -6,8 +6,8 @@ export default class UploadMeme extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name:"lalala",
-            caption:"hihi",
+            name:"",
+            caption:"",
             buffer: [],
             ipfsHash: "",
             modalOpen: false,
@@ -42,6 +42,7 @@ export default class UploadMeme extends Component {
             console.log("ipfsHash", this.state.ipfsHash)
             console.log("name ", this.state.name)
             console.log("caption ", this.state.caption)
+            console.log("MemeInfo", this.props.state.MEME)
             await this.props.state.MEME.createMeme(this.state.name, this.state.caption, this.state.ipfsHash)
             console.log("finish create MEME", this.props.userAddress)
             const number = await this.props.state.MEME.balanceOf(this.props.state.userAddress)
