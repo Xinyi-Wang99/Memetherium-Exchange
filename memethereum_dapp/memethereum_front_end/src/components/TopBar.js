@@ -6,6 +6,7 @@ import { Menu, Header, Icon, Modal } from "semantic-ui-react";
 import {imagething} from "../pages/MyZombieInventory.js";
 
 import UploadMeme from "./UploadMeme";
+import TransferMeme from "./TransferMeme";
 import CreateMeme from "../pages/CreateMeme";
 import MyMemes from "../pages/MyMemes";
 import Explore from "../pages/Explore";
@@ -30,19 +31,28 @@ export default class TopBar extends Component {
             isLoadedUpload: false,
             modalOpenUpload: false,
 
+            isLoadedTransfer: false,
+            modalOpenTransfer: false,
+
             topY: "10%",
             topX: "50%",
             bottomX: "50%",
-            bottomY: "90%"
+            bottomY: "90%",
+
+            userMemeCount: null
         }
         this.captureFile= this.captureFile.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
+        //this.getUserCount().then();
+
     }
 
     handleClose = () => this.setState({
         modalOpenMyMemes: false,
         modalOpenExplore: false,
         modalOpenUpload: false,
+        modalOpenTransfer: false,
 
          bottomText: "",
          topText: "",
@@ -67,6 +77,13 @@ export default class TopBar extends Component {
         this.setState({
             modalOpenUpload: true,
             isLoadedUpload: true
+        });
+    };
+
+    openImageTransfer = (e) =>{
+        this.setState({
+            isLoadedTransfer: true,
+            modalOpenTransfer: true
         });
     };
 
@@ -98,7 +115,12 @@ export default class TopBar extends Component {
         console.log("image variable:", this.state.ipfsHash)
     }
 
+    async getUserCount() {
+        const _userMemeCount = await this.props.state.MEME.balanceOf(this.props.state.userAddress)
+        this.setState({userMemeCount: _userMemeCount});
+    }
     render() {
+
         return (
             <div>
                 <Modal open={this.state.modalOpenMyMemes} onClose={this.handleClose}>
@@ -147,6 +169,22 @@ export default class TopBar extends Component {
                     </Modal.Actions>
                 </Modal>
 
+                <Modal open={this.state.modalOpenTransfer} onClose={this.handleClose}>
+                    <Header
+                        icon="browser"
+                        content="Transfer Meme"
+                    />
+                    <Modal.Content>
+                        <TransferMeme state = {this.props.state}/>
+                    </Modal.Content>
+
+                    <Modal.Actions>
+                        <Button color="red" onClick={this.handleClose} inverted>
+                            <Icon name="cancel" /> Close
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
+
                 <Menu style={{ marginTop: "10px", backgroundColor: "Salmon" }}>
                     <Menu.Item>
                             <Button primary onClick={(event) => this.openImageMyMemes(event)}>My Memes</Button>
@@ -158,6 +196,10 @@ export default class TopBar extends Component {
 
                     <Menu.Item>
                         <Button primary onClick={(event)=> this.openImageUpload(event)}>Upload Meme</Button>
+                    </Menu.Item>
+
+                    <Menu.Item>
+                        <Button primary onClick={(event)=> this.openImageTransfer(event)}>Transfer Meme</Button>
                     </Menu.Item>
 
                     <Menu.Item position="right">

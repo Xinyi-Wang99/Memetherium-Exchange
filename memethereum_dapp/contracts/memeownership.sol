@@ -20,19 +20,19 @@ contract MemeOwnership is  ERC721, MemeHelper{
         return memeToOwner[_tokenId];
     }
 
-    function _transfer(address _from, address _to, uint256 _tokenId) private {
+    function _transfer(address _from, address _to, uint _tokenId) private {
         ownerMemeCount[_to] = ownerMemeCount[_to].add(1);
         ownerMemeCount[msg.sender] = ownerMemeCount[msg.sender].sub(1);
         memeToOwner[_tokenId] = _to;
         emit Transfer(_from, _to, _tokenId);
     }
 
-    function transferFrom(address _from, address _to, uint256 _tokenId) external payable {
+    function transferFrom(address _from, address _to, uint _tokenId) external payable {
         require (memeToOwner[_tokenId] == msg.sender || memeApprovals[_tokenId] == msg.sender);
         _transfer(_from, _to, _tokenId);
     }
 
-    function approve(address _approved, uint256 _tokenId) external payable onlyOwnerOf(_tokenId) {
+    function approve(address _approved, uint _tokenId) external payable onlyOwnerOf(_tokenId) {
         memeApprovals[_tokenId] = _approved;
         emit Approval(msg.sender, _approved, _tokenId);
     }

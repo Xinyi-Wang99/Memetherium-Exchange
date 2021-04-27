@@ -47,6 +47,10 @@ export default class UploadMeme extends Component {
             console.log("finish create MEME", this.props.userAddress)
             const number = await this.props.state.MEME.balanceOf(this.props.state.userAddress)
             console.log("number", number)
+            const ownerHas = await this.props.state.MEME.getMemesByOwner(this.props.state.userAddress)
+            console.log("Owner has: ", ownerHas)
+            const newZombieOwner = await this.props.state.MEME.ownerOf(ownerHas[1])
+            console.log("should be owner addr ", newZombieOwner)
             console.log('this is from IPFS', this.state.ipfsHash)
         }catch(err){
             console.log(err)
