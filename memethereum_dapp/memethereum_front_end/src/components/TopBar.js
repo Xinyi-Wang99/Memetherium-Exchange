@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-redux";
-
 import { Button } from "semantic-ui-react";
 import { Menu, Header, Icon, Modal } from "semantic-ui-react";
-import {imagething} from "../pages/MyZombieInventory.js";
 
 import UploadMeme from "./UploadMeme";
-import CreateMeme from "../pages/CreateMeme";
-import MyMemes from "../pages/MyMemes";
+import MyMemes from "./MyMemes";
 import Explore from "../pages/Explore";
-// import MyZombieInventory from "../pages/MyZombieInventory";
 
 const IPFS = require('ipfs-api')
 const ipfs = new IPFS({host: 'ipfs.infura.io', port:5001, protocol:'https'})
@@ -74,10 +69,7 @@ export default class TopBar extends Component {
         return (
             <div>
                 <Modal open={this.state.modalOpenMyMemes} onClose={this.handleClose}>
-                    <Header
-                        icon="browser"
-                        content="My Memes"
-                    />
+                    <Header icon="browser" content="My Memes"/>
                     <Modal.Content>
                         <MyMemes state = {this.props.state}/>
                     </Modal.Content>
@@ -89,10 +81,7 @@ export default class TopBar extends Component {
                 </Modal>
 
                 <Modal open={this.state.modalOpenExplore} onClose={this.handleClose}>
-                    <Header
-                        icon="browser"
-                        content="Explore"
-                    />
+                    <Header icon="browser" content="Explore"/>
                     <Modal.Content>
                         <Explore state = {this.props.state}/>
                     </Modal.Content>
@@ -104,14 +93,10 @@ export default class TopBar extends Component {
                 </Modal>
 
                 <Modal open={this.state.modalOpenUpload} onClose={this.handleClose}>
-                    <Header
-                        icon="browser"
-                        content="Upload Meme"
-                    />
+                    <Header icon="browser" content="Upload Meme"/>
                     <Modal.Content>
                         <UploadMeme state = {this.props.state}/>
                     </Modal.Content>
-
                     <Modal.Actions>
                         <Button color="red" onClick={this.handleClose} inverted>
                             <Icon name="cancel" /> Close
