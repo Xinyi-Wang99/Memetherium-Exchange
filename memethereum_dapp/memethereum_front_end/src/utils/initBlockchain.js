@@ -18,10 +18,30 @@ const initBlockchain = async () => {
     console.log(MemetheriumContract);
     const MEMEabi = MemetheriumContract.abi;
     MEME = new ethers.Contract('0x74D7EE64E10E877ce1aAdfbA458b3F7ec583Fa1E', MEMEabi, signer);
+    console.log("MEME init", MEME)
+    let userMemeCount = +(await MEME.balanceOf(userAddress));
+
+    var high = 8192;
+    var low = 0;
+    var middle = 4096;
+
+    while (low < high) {
+        try {
+            await MEME.memes(middle);
+            low = middle + 1;
+            middle = Math.floor(low + (high - low) / 2);
+        } catch {
+            high = middle - 1;
+            middle = Math.floor(low + (high - low) / 2);
+        }
+    }
+
     let data = {
         MEME,
         signer,
         userAddress,
+        userMemeCount,
+        totalMemeCount: Math.max(low-1,1)
     };
 
     return data;

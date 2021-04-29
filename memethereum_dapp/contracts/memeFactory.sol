@@ -14,6 +14,7 @@ contract MemeFactory is Ownable{
     uint cooldownTime = 1 days;
 
     struct Meme {
+
         string name;
         string caption;
         string ipfsHash;

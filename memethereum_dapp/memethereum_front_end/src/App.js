@@ -20,8 +20,8 @@ class App extends Component {
         MEME: null,
         userAddress: "",
         signer:"",
-        userSupply: 0,
-        totalSupply: 0,
+        userMemeCount: 0,
+        totalMemeCount: 0
     }
 
     //this is trying to connect with blocChain, it only did one time at the beginning of the project
@@ -33,6 +33,8 @@ class App extends Component {
               MEME: memeInfo.MEME,
               signer: memeInfo.signer,
               userAddress: memeInfo.userAddress,
+              userMemeCount: memeInfo.userMemeCount,
+              totalMemeCount: memeInfo.totalMemeCount
           })
       } catch (error) {
           // Catch any errors for any of the above operations.

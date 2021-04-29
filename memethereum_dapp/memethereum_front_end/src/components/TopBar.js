@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-redux";
-
 import { Button } from "semantic-ui-react";
 import { Menu, Header, Icon, Modal } from "semantic-ui-react";
-import {imagething} from "../pages/MyZombieInventory.js";
 
 import UploadMeme from "./UploadMeme";
-import CreateMeme from "../pages/CreateMeme";
-import MyMemes from "../pages/MyMemes";
-import Explore from "../pages/Explore";
-// import MyZombieInventory from "../pages/MyZombieInventory";
+import MyMemes from "./MyMemes";
+import Explore from "./Explore";
 
 const IPFS = require('ipfs-api')
 const ipfs = new IPFS({host: 'ipfs.infura.io', port:5001, protocol:'https'})
@@ -20,13 +15,10 @@ export default class TopBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             isLoadedMyMemes: false,
             modalOpenMyMemes: false,
-
             isLoadedExplore: false,
             modalOpenExplore: false,
-
             isLoadedUpload: false,
             modalOpenUpload: false,
 
@@ -35,8 +27,7 @@ export default class TopBar extends Component {
             bottomX: "50%",
             bottomY: "90%"
         }
-        this.captureFile= this.captureFile.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+
     }
 
     handleClose = () => this.setState({
@@ -70,42 +61,12 @@ export default class TopBar extends Component {
         });
     };
 
-    captureFile(event){
-        event.preventDefault()
-        const file = event.target.files[0]
-        const reader = new window.FileReader()
-        reader.readAsArrayBuffer(file)  //converting the file into an array
-        reader.onloadend = () =>{
-            this.setState({buffer: Buffer(reader.result )})
-        }
-    }
-
-    getLocation() {
-        return this.state.ipfsHash;
-    }
-
-    onSubmit(event){
-        event.preventDefault()
-        ipfs.files.add(this.state.buffer, (error, result) => {
-            if(error){
-                console.error(error)
-                return
-            }
-            this.setState({ipfsHash : result[0].hash})
-            imagething.image_location = this.state.ipfsHash;
-        })
-        console.log('this is from IPFS', this.props.userAddress)
-        console.log("image variable:", this.state.ipfsHash)
-    }
 
     render() {
         return (
             <div>
                 <Modal open={this.state.modalOpenMyMemes} onClose={this.handleClose}>
-                    <Header
-                        icon="browser"
-                        content="My Memes"
-                    />
+                    <Header icon="browser" content="My Memes"/>
                     <Modal.Content>
                         <MyMemes state = {this.props.state}/>
                     </Modal.Content>
@@ -117,10 +78,7 @@ export default class TopBar extends Component {
                 </Modal>
 
                 <Modal open={this.state.modalOpenExplore} onClose={this.handleClose}>
-                    <Header
-                        icon="browser"
-                        content="Explore"
-                    />
+                    <Header icon="browser" content="Explore"/>
                     <Modal.Content>
                         <Explore state = {this.props.state}/>
                     </Modal.Content>
@@ -132,14 +90,10 @@ export default class TopBar extends Component {
                 </Modal>
 
                 <Modal open={this.state.modalOpenUpload} onClose={this.handleClose}>
-                    <Header
-                        icon="browser"
-                        content="Upload Meme"
-                    />
+                    <Header icon="browser" content="Upload Meme"/>
                     <Modal.Content>
                         <UploadMeme state = {this.props.state}/>
                     </Modal.Content>
-
                     <Modal.Actions>
                         <Button color="red" onClick={this.handleClose} inverted>
                             <Icon name="cancel" /> Close
@@ -160,6 +114,7 @@ export default class TopBar extends Component {
                         <Button primary onClick={(event)=> this.openImageUpload(event)}>Upload Meme</Button>
                     </Menu.Item>
 
+
                     <Menu.Item position="right">
                             <Header size="large"> The Great Memetherium Exchange </Header>
                     </Menu.Item>
@@ -169,7 +124,7 @@ export default class TopBar extends Component {
                 </div>
                 Your account address: {this.props.state.userAddress}
                 <br />
-                You own {this.props.userZombieCount} meme(s) out of a total of approximately {this.props.totalZombieCount}.
+                You own {this.props.state.userMemeCount} meme(s) out of a total of approximately {this.props.state.totalMemeCount}.
                 <hr />
             </div>
         );
