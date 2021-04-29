@@ -11,7 +11,6 @@ export default class ZombieCard extends Component {
         };
         this.transferMemes = this.transferMemes.bind(this)
         this.buyMemes = this.buyMemes.bind(this)
-        this.sellMemes = this.sellMemes.bind(this)
         this.modalOpen = this.modalOpen.bind(this)
     }
 
@@ -23,12 +22,6 @@ export default class ZombieCard extends Component {
         event.preventDefault()
 
      }
-
-     sellMemes(event){
-        event.preventDefault()
-
-     }
-
 
     modalOpen(){
         this.setState({ modalOpen: true });
@@ -68,8 +61,6 @@ export default class ZombieCard extends Component {
                             content="These are the actions you can take with your meme!"
                         />
                         <Modal.Content>
-                            <Button primary onClick={(event) => this.transferMemes(event)}>Transfer Meme</Button>
-                            <Button primary onClick={(event) => this.sellMemes(event)}>Sell Meme</Button>
                             <Button primary onClick={(event) => this.buyMemes(event)}>Buy Meme</Button>
                         </Modal.Content>
 
@@ -84,8 +75,36 @@ export default class ZombieCard extends Component {
         // someone else's zombie.  just show the card.
         else
             return (
-                <Card style={{ backgroundColor: "LavenderBlush" }}>
-                    <MemeCardContent meme={this.props} />
+                // <Card style={{ backgroundColor: "LavenderBlush" }}>
+                //     <MemeCardContent meme={this.props} />
+                // </Card>
+                <Card style={{ backgroundColor: "LavenderBlush" }} raised>
+                    <ReactTooltip delayShow={400} />
+                    <a
+                        href="javascript:;"
+                        data-tip="Click on me to view actions for this zombie"
+                        onClick={e => this.modalOpen(e)}
+                    >
+                        <MemeCardContent meme={this.props} />
+                    </a>
+
+                    {/* a modal is like an "alert", it's a popup that greys out the lower screen and displays its content on top of everything */}
+
+                    <Modal open={this.state.modalOpen} onClose={this.handleClose}>
+                        <Header
+                            icon="browser"
+                            content="These are the actions you can take with your meme!"
+                        />
+                        <Modal.Content>
+                            <Button primary onClick={(event) => this.buyMemes(event)}>Buy Meme</Button>
+                        </Modal.Content>
+
+                        <Modal.Actions>
+                            <Button color="red" onClick={this.handleClose} inverted>
+                                <Icon name="cancel" /> Close
+                            </Button>
+                        </Modal.Actions>
+                    </Modal>
                 </Card>
             );
     }
