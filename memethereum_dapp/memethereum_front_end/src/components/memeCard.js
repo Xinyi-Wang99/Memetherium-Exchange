@@ -1,15 +1,37 @@
 import React, { Component } from "react";
-import { Icon, Card, Header, Modal, Button } from "semantic-ui-react";
+import {Icon, Card, Header, Modal, Button, Menu} from "semantic-ui-react";
 import ReactTooltip from "react-tooltip";
 import ActionButton from "./ActionButton";
 import MemeCardContent from "./memeCardContent";
 
-class ZombieCard extends Component {
-    state = {
-        modalOpen: false
-    };
+export default class ZombieCard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalOpen: false
+        };
+        this.transferMemes = this.transferMemes.bind(this)
+        this.buyMemes = this.buyMemes.bind(this)
+        this.sellMemes = this.sellMemes.bind(this)
+        this.modalOpen = this.modalOpen.bind(this)
+    }
 
-    modalOpen() {
+     transferMemes(event){
+        event.preventDefault()
+     }
+
+     buyMemes(event){
+        event.preventDefault()
+
+     }
+
+     sellMemes(event){
+        event.preventDefault()
+
+     }
+
+
+    modalOpen(){
         this.setState({ modalOpen: true });
     }
 
@@ -25,28 +47,9 @@ class ZombieCard extends Component {
     };
 
     render() {
-
-        const TransferMemes= (
-            <div>
-                Transfer Memes <br /> {" "}
-            </div>
-        );
-        const BuyMemes = (
-            <div>
-                Buy Memes <br /> {" "}
-            </div>
-        );
-        const SellMemes = (
-            <div>
-               Sell Memes <br /> {" "}
-            </div>
-        );
-
         // create the JSX depending on whether you own the zombie or not
-
         if (this.props.myOwner)
             // Owner zombie: render card and tooltip and modal for zombie actions
-
             return (
                 <Card style={{ backgroundColor: "LightYellow" }} raised>
                     <ReactTooltip delayShow={400} />
@@ -65,24 +68,10 @@ class ZombieCard extends Component {
                             icon="browser"
                             content="These are the actions you can take with your meme!"
                         />
-
                         <Modal.Content>
-
-                            <ActionButton
-                                buttonLabel={TransferMemes}
-                                data={this.props}
-                            />
-
-                            <ActionButton
-                                buttonLabel={BuyMemes}
-                                data={this.props}
-                            />
-
-                            <ActionButton
-                                buttonLabel={TransferMemes}
-                                data={this.props}
-                            />
-
+                            <Button primary onClick={(event) => this.transferMemes(event)}>Transfer Meme</Button>
+                            <Button primary onClick={(event) => this.sellMemes(event)}>Sell Meme</Button>
+                            <Button primary onClick={(event) => this.buyMemes(event)}>Buy Meme</Button>
                         </Modal.Content>
 
                         <Modal.Actions>
@@ -103,4 +92,3 @@ class ZombieCard extends Component {
     }
 }
 
-export default ZombieCard;
