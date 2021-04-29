@@ -35,8 +35,7 @@ export default class TopBar extends Component {
             bottomX: "50%",
             bottomY: "90%"
         }
-        this.captureFile= this.captureFile.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+
     }
 
     handleClose = () => this.setState({
@@ -70,33 +69,6 @@ export default class TopBar extends Component {
         });
     };
 
-    captureFile(event){
-        event.preventDefault()
-        const file = event.target.files[0]
-        const reader = new window.FileReader()
-        reader.readAsArrayBuffer(file)  //converting the file into an array
-        reader.onloadend = () =>{
-            this.setState({buffer: Buffer(reader.result )})
-        }
-    }
-
-    getLocation() {
-        return this.state.ipfsHash;
-    }
-
-    onSubmit(event){
-        event.preventDefault()
-        ipfs.files.add(this.state.buffer, (error, result) => {
-            if(error){
-                console.error(error)
-                return
-            }
-            this.setState({ipfsHash : result[0].hash})
-            imagething.image_location = this.state.ipfsHash;
-        })
-        console.log('this is from IPFS', this.props.userAddress)
-        console.log("image variable:", this.state.ipfsHash)
-    }
 
     render() {
         return (
