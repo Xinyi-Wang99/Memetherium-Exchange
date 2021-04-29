@@ -6,8 +6,8 @@ export default class MyZombieInventory extends Component {
     state = {
         memeTable: [],
         activePage: 1,
-       // totalPages: Math.ceil(this.props.state.userZombieCount / 9)
-        totalPages:1,
+        totalPages: Math.ceil(this.props.state.userMemeCount / 9)
+
     };
 
     componentDidMount = async () => {

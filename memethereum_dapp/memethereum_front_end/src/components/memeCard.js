@@ -85,7 +85,7 @@ export default class ZombieCard extends Component {
         else
             return (
                 <Card style={{ backgroundColor: "LavenderBlush" }}>
-                    <memeCardContent meme={this.props} />
+                    <MemeCardContent meme={this.props} />
                 </Card>
             );
     }

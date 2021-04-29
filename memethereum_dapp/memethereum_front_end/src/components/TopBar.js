@@ -4,7 +4,7 @@ import { Menu, Header, Icon, Modal } from "semantic-ui-react";
 
 import UploadMeme from "./UploadMeme";
 import MyMemes from "./MyMemes";
-import Explore from "../pages/Explore";
+import Explore from "./Explore";
 
 const IPFS = require('ipfs-api')
 const ipfs = new IPFS({host: 'ipfs.infura.io', port:5001, protocol:'https'})
@@ -15,13 +15,10 @@ export default class TopBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             isLoadedMyMemes: false,
             modalOpenMyMemes: false,
-
             isLoadedExplore: false,
             modalOpenExplore: false,
-
             isLoadedUpload: false,
             modalOpenUpload: false,
 
@@ -117,6 +114,7 @@ export default class TopBar extends Component {
                         <Button primary onClick={(event)=> this.openImageUpload(event)}>Upload Meme</Button>
                     </Menu.Item>
 
+
                     <Menu.Item position="right">
                             <Header size="large"> The Great Memetherium Exchange </Header>
                     </Menu.Item>
@@ -126,7 +124,7 @@ export default class TopBar extends Component {
                 </div>
                 Your account address: {this.props.state.userAddress}
                 <br />
-                You own {this.props.userZombieCount} meme(s) out of a total of approximately {this.props.totalZombieCount}.
+                You own {this.props.state.userMemeCount} meme(s) out of a total of approximately {this.props.state.totalMemeCount}.
                 <hr />
             </div>
         );
