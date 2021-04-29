@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {Icon, Card, Header, Modal, Button, Menu} from "semantic-ui-react";
 import ReactTooltip from "react-tooltip";
-import ActionButton from "./ActionButton";
 import MemeCardContent from "./memeCardContent";
 
 export default class ZombieCard extends Component {
