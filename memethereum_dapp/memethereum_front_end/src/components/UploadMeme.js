@@ -73,6 +73,10 @@ export default class UploadMeme extends Component {
     render() {
         return (
                 <main className="container">
+                    <h3>
+                        Make sure you see the image appear in this page before pressing the submit.
+                        It takes a few seconds for the image to appear.
+                    </h3>
                     <img src ={`https://ipfs.io/ipfs/${this.state.ipfsHash}`} alt =""/>
                     <form onSubmit = {this.onSubmit}>
                         <input type="file" onChange = {this.captureFile}/>

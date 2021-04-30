@@ -116,7 +116,7 @@ export default class TopBar extends Component {
 
 
                     <Menu.Item position="right">
-                            <Header size="large"> The Great Memetherium Exchange </Header>
+                            <Header size="large"> The Great Memethereum Exchange </Header>
                     </Menu.Item>
                 </Menu>
                 <div className="center">
