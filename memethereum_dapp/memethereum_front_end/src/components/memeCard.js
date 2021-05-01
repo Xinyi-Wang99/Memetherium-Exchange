@@ -50,8 +50,8 @@ export default class ZombieCard extends Component {
              console.log("MemeInfo", this.props)
              console.log("memeID", this.props.memeId)
              console.log("meme owner address: ", this.props.memeOwner)
-             const testMeme =  await this.props.MEME.getMemesByOwner(this.props.memeOwner)[0]
-             await this.props.MEME.transferFrom(this.props.memeOwner, this.state.value, this.props.memeId)
+             //const testMeme =  await this.props.MEME.getMemesByOwner(this.props.memeOwner)[0]
+             //await this.props.MEME.transferFrom(this.props.memeOwner, this.state.value, this.props.memeId)
              console.log("finish create MEME", this.props.memeOwner)
              //const number = await this.props.state.MEME.balanceOf(this.props.state.userAddress)
              //console.log("number", number)

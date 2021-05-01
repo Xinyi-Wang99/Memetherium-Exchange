@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Input} from 'reactstrap';
+import { ethers } from "ethers";
 const IPFS = require('ipfs-api')
 const ipfs = new IPFS({host: 'ipfs.infura.io', port:5001, protocol:'https'})
 export default class TransferMeme extends Component {
@@ -48,8 +49,7 @@ export default class TransferMeme extends Component {
             console.log("MemeInfo", this.props.state)
             console.log("Meme owner: ", this.props.state.memeOwner)
             const testMeme =  await this.props.state.state.MEME.getMemesByOwner(this.props.state.state.userAddress)[0]
-            //TODO: make memeID a int before?
-            await this.props.state.state.MEME.transferFrom(this.props.state.memeOwner, this.state.value, this.props.state.memeId)
+            await this.props.state.state.MEME.transferFrom(ethers.utils.getAddress(this.props.state.memeOwner), ethers.utils.getAddress(this.props.state.state.userAddress), this.props.state.memeId)
             // console.log("finish create MEME", this.props.userAddress)
             // const number = await this.props.state.MEME.balanceOf(this.props.state.userAddress)
             // console.log("number", number)
@@ -81,7 +81,7 @@ export default class TransferMeme extends Component {
     render() {
         return (
             <main className="container">
-                <img src ={`https://ipfs.io/ipfs/${this.state.ipfsHash}`} alt =""/>
+                {/*<img src ={`https://ipfs.io/ipfs/${this.state.ipfsHash}`} alt =""/>*/}
                 <form onSubmit = {this.onSubmit}>
                     <Input type="text" name="value" style = {{marginBottom: 10}} value={this.name} placeholder="Address To Transfer To" onChange={(e) => {
                         this.handleChangeAddr(e)
