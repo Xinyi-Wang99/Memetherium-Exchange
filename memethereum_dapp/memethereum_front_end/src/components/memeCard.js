@@ -88,7 +88,7 @@ export default class ZombieCard extends Component {
                         data-tip="Click on me to view actions for this zombie"
                         onClick={e => this.modalOpen(e)}
                     >
-                        <MemeCardContent meme={this.props} />
+                        {/*<MemeCardContent meme={this.props} />*/}
                     </a>
 
                     {/* a modal is like an "alert", it's a popup that greys out the lower screen and displays its content on top of everything */}
@@ -99,7 +99,8 @@ export default class ZombieCard extends Component {
                             content="These are the actions you can take with your meme!"
                         />
                         <Modal.Content>
-                            <Button primary onClick={(event) => this.buyMemes(event)}>Buy Meme</Button>
+                            <TransferMeme state={this.props}/>
+                            {/*<Button primary onClick={(event) => this.buyMemes(event)}>Buy Meme</Button>*/}
                         </Modal.Content>
 
                         <Modal.Actions>

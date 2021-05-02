@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/erc721.sol": {
-      "lastModificationDate": 1619402462492,
-      "contentHash": "7155a007b3daf1b2f3b780fc4769c72c",
+      "lastModificationDate": 1619916167343,
+      "contentHash": "15d9988ade602e77c9b9f63a9ab137ae",
       "sourceName": "contracts/erc721.sol",
       "solcConfig": {
         "version": "0.5.1",
@@ -36,8 +36,8 @@
       ]
     },
     "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/memeownership.sol": {
-      "lastModificationDate": 1619831542132,
-      "contentHash": "4d2ec3c33916be25a26f9207a1bf801b",
+      "lastModificationDate": 1619916150465,
+      "contentHash": "5aa7564cfae86c4fc76016adaacefe8f",
       "sourceName": "contracts/memeownership.sol",
       "solcConfig": {
         "version": "0.5.1",
@@ -146,7 +146,7 @@
       ]
     },
     "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/memeFactory.sol": {
-      "lastModificationDate": 1619737695464,
+      "lastModificationDate": 1619829959969,
       "contentHash": "36724be215db8d0018931e5acae147bd",
       "sourceName": "contracts/memeFactory.sol",
       "solcConfig": {
@@ -220,7 +220,7 @@
       ]
     },
     "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/Memetherium.sol": {
-      "lastModificationDate": 1619402462492,
+      "lastModificationDate": 1619915509045,
       "contentHash": "8ae8a302ce412d437a3ed2eba44f6a3d",
       "sourceName": "contracts/Memetherium.sol",
       "solcConfig": {

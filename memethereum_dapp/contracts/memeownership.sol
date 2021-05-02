@@ -11,6 +11,7 @@ contract MemeOwnership is  ERC721, MemeHelper{
     using SafeMath for uint256;
 
     mapping (uint => address) memeApprovals;
+    //mapping (address => uint256) ethBalance;
 
     function balanceOf(address _owner) external view returns (uint256) {
         return ownerMemeCount[_owner];
@@ -27,9 +28,14 @@ contract MemeOwnership is  ERC721, MemeHelper{
         emit Transfer(_from, _to, _tokenId);
     }
 
-    function transferFrom(address _from, address _to, uint _tokenId) external payable {
+    function transferFrom(address payable _from, address _to, uint _tokenId) external payable {
         require (memeToOwner[_tokenId] == _from || memeApprovals[_tokenId] == _from);
         _transfer(_from, _to, _tokenId);
+//        require(msg.value == _price);
+//        ethBalance[msg.sender] = msg.value;
+//        _from.transfer(_price);
+//        ethBalance[msg.sender] -= msg.value;
+//        ethBalance[_from] = msg.value;
     }
 
     function approve(address _approved, uint _tokenId) external payable onlyOwnerOf(_tokenId) {
