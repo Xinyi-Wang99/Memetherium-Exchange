@@ -48,11 +48,15 @@ export default class TransferMeme extends Component {
             console.log("value: ", this.state.value)
             console.log("props: ", this.props)
             console.log("MemeInfo", this.props.state)
+            console.log("MemeInfo1", this.props.state.state.MEME)
             console.log("Meme owner: ", this.props.state.memeOwner)
             //const testMeme =  await this.props.state.state.MEME.getMemesByOwner(this.props.state.state.userAddress)[0]
-            await this.props.state.state.MEME.transferFrom(ethers.utils.getAddress(this.props.state.memeOwner),
-                                                            ethers.utils.getAddress(this.props.state.state.userAddress),
-                                                            this.props.state.memeId)//.send(
+            await this.props.state.state.MEME["transferFrom(address,address,uint256)"](ethers.utils.getAddress(this.props.state.memeOwner),
+                                                                         ethers.utils.getAddress(this.props.state.state.userAddress),
+                                                                         this.props.state.memeId);
+            //await this.props.state.state.MEME.transferFrom(ethers.utils.getAddress(this.props.state.memeOwner),
+            //                                                ethers.utils.getAddress(this.props.state.state.userAddress),
+            //                                                this.props.state.memeId).call();//.send(
             //     {
             //         from: this.props.state.state.userAddress,
             //         gas: 100000,

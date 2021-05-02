@@ -28,7 +28,7 @@ contract MemeOwnership is  ERC721, MemeHelper{
         emit Transfer(_from, _to, _tokenId);
     }
 
-    function transferFrom(address payable _from, address _to, uint _tokenId) external payable {
+    function transferFrom(address _from, address _to, uint _tokenId) external payable {
         require (memeToOwner[_tokenId] == _from || memeApprovals[_tokenId] == _from);
         _transfer(_from, _to, _tokenId);
 //        require(msg.value == _price);

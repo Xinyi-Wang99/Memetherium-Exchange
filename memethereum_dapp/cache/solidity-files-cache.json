@@ -36,8 +36,8 @@
       ]
     },
     "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/memeownership.sol": {
-      "lastModificationDate": 1619916150465,
-      "contentHash": "5aa7564cfae86c4fc76016adaacefe8f",
+      "lastModificationDate": 1619989476532,
+      "contentHash": "9d81b3a5e6f69e8b351dd3560f9ee282",
       "sourceName": "contracts/memeownership.sol",
       "solcConfig": {
         "version": "0.5.1",
