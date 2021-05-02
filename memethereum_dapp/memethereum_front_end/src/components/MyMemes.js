@@ -41,7 +41,7 @@ export default class MyZombieInventory extends Component {
                 memeTable.push(
                     <MemeCard
                         key={id}
-                        memeId={id.toString()}
+                        memeId={id}
                         memeName={meme.name}
                         memeCaption={meme.caption}
                         memeHash={meme.ipfsHash}

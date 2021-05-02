@@ -17,7 +17,7 @@ const initBlockchain = async () => {
     let MEME = null;
     console.log(MemetheriumContract);
     const MEMEabi = MemetheriumContract.abi;
-    MEME = new ethers.Contract('0x74D7EE64E10E877ce1aAdfbA458b3F7ec583Fa1E', MEMEabi, signer);
+    MEME = new ethers.Contract('0x968263088fA47F49f1a66612cA65E7a27Fa89094', MEMEabi, signer);//new ethers.Contract('0x74D7EE64E10E877ce1aAdfbA458b3F7ec583Fa1E', MEMEabi, signer);
     console.log("MEME init", MEME)
     let userMemeCount = +(await MEME.balanceOf(userAddress));
 
