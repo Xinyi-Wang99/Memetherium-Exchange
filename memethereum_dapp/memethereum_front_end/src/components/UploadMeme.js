@@ -73,6 +73,10 @@ export default class UploadMeme extends Component {
     render() {
         return (
                 <main className="container">
+                    <h3>
+                        Before pressing submit, make sure that the image you uploaded appears in this window.
+                        The image will only appear once you enter a meme name and caption in the textboxes. 
+                    </h3>
                     <img src ={`https://ipfs.io/ipfs/${this.state.ipfsHash}`} alt =""/>
                     <form onSubmit = {this.onSubmit}>
                         <input type="file" onChange = {this.captureFile}/>
