@@ -85,7 +85,7 @@ export default class ZombieCard extends Component {
                     <ReactTooltip delayShow={400}/>
                     <a
                         href="javascript:;"
-                        data-tip="Click on me to view actions for this zombie"
+                        data-tip="Click on me to view actions for this meme"
                         onClick={e => this.modalOpen(e)}
                     >
                         <MemeCardContent meme={this.props} />
@@ -123,7 +123,7 @@ export default class ZombieCard extends Component {
                     <ReactTooltip delayShow={400}/>
                     <a
                         href="javascript:;"
-                        data-tip="Click on me to view actions for this zombie"
+                        data-tip="Click on me to view actions for this meme"
                         onClick={e => this.modalOpen(e)}
                     >
                         <MemeCardContent meme={this.props}/>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card, Grid, Input, Segment, Pagination } from "semantic-ui-react";
-import MemeCard from "./memeCard";
+import MemeCard from "./memeCardMyMemes";
 
 export default class MyZombieInventory extends Component {
     state = {
@@ -41,7 +41,7 @@ export default class MyZombieInventory extends Component {
                 memeTable.push(
                     <MemeCard
                         key={id}
-                        memeId={id}
+                        memeId={id.toString()}
                         memeName={meme.name}
                         memeCaption={meme.caption}
                         memeHash={meme.ipfsHash}
