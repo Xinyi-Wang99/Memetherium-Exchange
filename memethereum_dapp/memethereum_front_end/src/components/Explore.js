@@ -74,8 +74,10 @@ export default class MemeInventory extends Component {
             <div>
                 <hr />
                 <h2> Complete Meme Inventory </h2>
-                The memes you own have a yellow background; clicking anywhere on a
-                yellow card will bring up a list of actions you can perform.
+                The memes with a yellow background are the memes that you own.
+                The memes with a red background are memes that are owned by someone else.
+                Click on a meme with a red background to purchase the meme which will add
+                it to your inventory. 
                 <hr />
                 <Grid columns={2} verticalAlign="middle">
                     <Grid.Column>
