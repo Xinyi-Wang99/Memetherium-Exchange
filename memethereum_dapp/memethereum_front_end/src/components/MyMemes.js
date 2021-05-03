@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card, Grid, Input, Segment, Pagination } from "semantic-ui-react";
-import MemeCard from "./memeCard";
+import MemeCard from "./memeCardMyMemes";
 
 export default class MyZombieInventory extends Component {
     state = {

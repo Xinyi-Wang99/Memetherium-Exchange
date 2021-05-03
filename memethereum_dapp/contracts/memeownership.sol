@@ -11,28 +11,34 @@ contract MemeOwnership is  ERC721, MemeHelper{
     using SafeMath for uint256;
 
     mapping (uint => address) memeApprovals;
+    //mapping (address => uint256) ethBalance;
 
     function balanceOf(address _owner) external view returns (uint256) {
         return ownerMemeCount[_owner];
     }
 
-    function ownerOf(uint256 _tokenId) external view returns (address) {
+    function ownerOf(uint _tokenId) external view returns (address) {
         return memeToOwner[_tokenId];
     }
 
-    function _transfer(address _from, address _to, uint256 _tokenId) private {
+    function _transfer(address _from, address _to, uint _tokenId) private {
         ownerMemeCount[_to] = ownerMemeCount[_to].add(1);
-        ownerMemeCount[msg.sender] = ownerMemeCount[msg.sender].sub(1);
+        ownerMemeCount[_from] = ownerMemeCount[_from].sub(1);
         memeToOwner[_tokenId] = _to;
         emit Transfer(_from, _to, _tokenId);
     }
 
-    function transferFrom(address _from, address _to, uint256 _tokenId) external payable {
-        require (memeToOwner[_tokenId] == msg.sender || memeApprovals[_tokenId] == msg.sender);
+    function transferFrom(address _from, address _to, uint _tokenId) external payable {
+        require (memeToOwner[_tokenId] == _from || memeApprovals[_tokenId] == _from);
         _transfer(_from, _to, _tokenId);
+//        require(msg.value == _price);
+//        ethBalance[msg.sender] = msg.value;
+//        _from.transfer(_price);
+//        ethBalance[msg.sender] -= msg.value;
+//        ethBalance[_from] = msg.value;
     }
 
-    function approve(address _approved, uint256 _tokenId) external payable onlyOwnerOf(_tokenId) {
+    function approve(address _approved, uint _tokenId) external payable onlyOwnerOf(_tokenId) {
         memeApprovals[_tokenId] = _approved;
         emit Approval(msg.sender, _approved, _tokenId);
     }

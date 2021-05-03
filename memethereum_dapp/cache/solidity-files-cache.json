@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/erc721.sol": {
-      "lastModificationDate": 1619153457349,
-      "contentHash": "7155a007b3daf1b2f3b780fc4769c72c",
+    "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/erc721.sol": {
+      "lastModificationDate": 1619916167343,
+      "contentHash": "15d9988ade602e77c9b9f63a9ab137ae",
       "sourceName": "contracts/erc721.sol",
       "solcConfig": {
         "version": "0.5.1",
@@ -35,9 +35,9 @@
         "ERC721"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/memeownership.sol": {
-      "lastModificationDate": 1619153457349,
-      "contentHash": "89edf9371149f0e67de064084755fbe2",
+    "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/memeownership.sol": {
+      "lastModificationDate": 1619989476532,
+      "contentHash": "9d81b3a5e6f69e8b351dd3560f9ee282",
       "sourceName": "contracts/memeownership.sol",
       "solcConfig": {
         "version": "0.5.1",
@@ -73,8 +73,8 @@
         "MemeOwnership"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/safemath.sol": {
-      "lastModificationDate": 1619153457349,
+    "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/safemath.sol": {
+      "lastModificationDate": 1619402462493,
       "contentHash": "d389aeacd26877e3954382c22f8a9f6b",
       "sourceName": "contracts/safemath.sol",
       "solcConfig": {
@@ -109,8 +109,8 @@
         "SafeMath32"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/memehelper.sol": {
-      "lastModificationDate": 1619153457349,
+    "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/memehelper.sol": {
+      "lastModificationDate": 1619559678546,
       "contentHash": "775b8591510c6500d6a0003447f8e55f",
       "sourceName": "contracts/memehelper.sol",
       "solcConfig": {
@@ -145,9 +145,9 @@
         "MemeHelper"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/memeFactory.sol": {
-      "lastModificationDate": 1619153457349,
-      "contentHash": "54738e2b2d377412a78b8d0a5b2ac3a4",
+    "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/memeFactory.sol": {
+      "lastModificationDate": 1619829959969,
+      "contentHash": "36724be215db8d0018931e5acae147bd",
       "sourceName": "contracts/memeFactory.sol",
       "solcConfig": {
         "version": "0.5.1",
@@ -182,8 +182,8 @@
         "MemeFactory"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/ownable.sol": {
-      "lastModificationDate": 1619153457349,
+    "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/ownable.sol": {
+      "lastModificationDate": 1619402462493,
       "contentHash": "56ae247cc35cbb019ef7d86b7f8fa6be",
       "sourceName": "contracts/ownable.sol",
       "solcConfig": {
@@ -219,8 +219,8 @@
         "Ownable"
       ]
     },
-    "/Users/wangxinyi/Documents/CSU2021SP/CS458/TermProject/Meme/memethereum_dapp/contracts/Memetherium.sol": {
-      "lastModificationDate": 1619153457349,
+    "/Users/j4k3/Documents/Semester6/cs458/term-project1/memethereum_dapp/contracts/Memetherium.sol": {
+      "lastModificationDate": 1619915509045,
       "contentHash": "8ae8a302ce412d437a3ed2eba44f6a3d",
       "sourceName": "contracts/Memetherium.sol",
       "solcConfig": {

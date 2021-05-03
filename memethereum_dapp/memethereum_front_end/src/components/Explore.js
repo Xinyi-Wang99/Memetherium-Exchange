@@ -3,11 +3,14 @@ import {Card, Grid, Input, Segment, Pagination,} from "semantic-ui-react";
 import MemeCard from "./memeCard";
 
 export default class MemeInventory extends Component {
-    state = {
-        memeTable: [],
-        activePage: 1,
-        totalPages: Math.ceil(this.props.state.totalMemeCount / 9)
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            memeTable: [],
+            activePage: 1,
+            totalPages: Math.ceil(this.props.state.totalMemeCount / 9)
+        };
+    }
 
     componentDidMount = async () => {
         await this.makeMemeCards();
@@ -51,6 +54,7 @@ export default class MemeInventory extends Component {
             console.log("currently meme", memeList[id])
             memeTable.push(
                 <MemeCard
+                    state={this.props.state}
                     key={id}
                     memeId={id.toString()}
                     memeName={memeList[id].name}
